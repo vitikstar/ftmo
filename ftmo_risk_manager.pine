@@ -1,0 +1,149 @@
+//@version=5
+indicator("FTMO Risk Manager", overlay=false, max_lines_count=10)
+
+// ═══════════════════════════════════════════════════════════
+//  FTMO RISK MANAGER — на основі правил FTMO Challenge
+//  Автор: для особистого тренування дисципліни
+// ═══════════════════════════════════════════════════════════
+
+// ─── НАЛАШТУВАННЯ ───────────────────────────────────────────
+var float ACCOUNT_BALANCE   = input.float(100.0,  "Початковий баланс ($)",  minval=1)
+var float DAILY_LOSS_PCT    = input.float(5.0,    "Max Daily Loss (%)",     minval=0.1, maxval=100) / 100
+var float MAX_LOSS_PCT      = input.float(10.0,   "Max Total Loss (%)",     minval=0.1, maxval=100) / 100
+var float PROFIT_TARGET_PCT = input.float(10.0,   "Profit Target (%)",      minval=0.1, maxval=100) / 100
+var float RISK_PER_TRADE    = input.float(1.0,    "Ризик на угоду (%)",     minval=0.1, maxval=5)   / 100
+
+// ─── РОЗРАХУНОК ЛІМІТІВ ──────────────────────────────────────
+float dailyLossLimit    = ACCOUNT_BALANCE * DAILY_LOSS_PCT
+float maxLossLimit      = ACCOUNT_BALANCE * MAX_LOSS_PCT
+float profitTarget      = ACCOUNT_BALANCE * PROFIT_TARGET_PCT
+float riskPerTrade      = ACCOUNT_BALANCE * RISK_PER_TRADE
+
+// ─── СИМУЛЯЦІЯ P&L (на основі close ціни) ───────────────────
+// Використовується як демонстраційна крива — замінюй на свій реальний P&L
+float pnlSimulated = (close - close[20]) / close[20] * ACCOUNT_BALANCE
+
+// ─── ВІДСТЕЖЕННЯ ДЕННОГО P&L ────────────────────────────────
+var float dayStartPrice  = na
+var float dailyPnL       = 0.0
+
+if dayofweek != dayofweek[1] or na(dayStartPrice)
+    dayStartPrice := close
+
+dailyPnL := (close - dayStartPrice) / dayStartPrice * ACCOUNT_BALANCE
+
+// ─── ВІДСОТКИ ────────────────────────────────────────────────
+float dailyPnLPct = dailyPnL / ACCOUNT_BALANCE * 100
+float totalPnLPct = pnlSimulated / ACCOUNT_BALANCE * 100
+
+// ─── СТАТУСИ ─────────────────────────────────────────────────
+bool dailyLimitBreached = dailyPnL <= -dailyLossLimit
+bool totalLimitBreached = pnlSimulated <= -maxLossLimit
+bool profitReached      = pnlSimulated >= profitTarget
+bool dailyWarning       = dailyPnL <= -(dailyLossLimit * 0.75)   // 75% від ліміту
+bool totalWarning       = pnlSimulated <= -(maxLossLimit * 0.75)
+
+// ─── КОЛЬОРИ ─────────────────────────────────────────────────
+color clrGreen  = #00C853
+color clrYellow = #FFD600
+color clrRed    = #FF1744
+color clrBlue   = #2196F3
+color clrGray   = #546E7A
+
+// ─── ГРАФІК P&L ──────────────────────────────────────────────
+plot(pnlSimulated,        "Total P&L ($)",  color=pnlSimulated >= 0 ? clrGreen : clrRed, linewidth=2)
+plot(dailyPnL,            "Daily P&L ($)",  color=clrBlue, linewidth=1, style=plot.style_area, transp=80)
+hline(profitTarget,       "Profit Target",  color=clrGreen,  linestyle=hline.style_dashed, linewidth=1)
+hline(0,                  "Breakeven",      color=clrGray,   linestyle=hline.style_solid,  linewidth=1)
+hline(-dailyLossLimit,    "Daily Limit",    color=clrYellow, linestyle=hline.style_dashed, linewidth=1)
+hline(-maxLossLimit,      "Max Loss",       color=clrRed,    linestyle=hline.style_dashed, linewidth=2)
+
+// ─── ТАБЛИЦЯ НА ЕКРАНІ ───────────────────────────────────────
+var table dashboard = table.new(position.top_right, 2, 9,
+     bgcolor=#0D1117, border_color=#30363D, border_width=1,
+     frame_color=#58A6FF, frame_width=1)
+
+// Заголовок
+table.cell(dashboard, 0, 0, "📊 FTMO RISK MANAGER", text_color=#58A6FF,
+     text_size=size.normal, bgcolor=#161B22, text_halign=text.align_center)
+table.cell(dashboard, 1, 0, "Баланс: $" + str.tostring(ACCOUNT_BALANCE, "#.##"),
+     text_color=#8B949E, text_size=size.normal, bgcolor=#161B22, text_halign=text.align_center)
+
+// Daily P&L
+color dailyColor = dailyLimitBreached ? clrRed : dailyWarning ? clrYellow : clrGreen
+table.cell(dashboard, 0, 1, "📅 Денний P&L", text_color=#8B949E, text_size=size.small, bgcolor=#0D1117)
+table.cell(dashboard, 1, 1,
+     (dailyPnL >= 0 ? "+" : "") + str.tostring(dailyPnL, "#.##") + "$ (" +
+     (dailyPnLPct >= 0 ? "+" : "") + str.tostring(dailyPnLPct, "#.##") + "%)",
+     text_color=dailyColor, text_size=size.small, bgcolor=#0D1117)
+
+// Total P&L
+color totalColor = totalLimitBreached ? clrRed : totalWarning ? clrYellow : profitReached ? #00E676 : clrGreen
+table.cell(dashboard, 0, 2, "💰 Загальний P&L", text_color=#8B949E, text_size=size.small, bgcolor=#0D1117)
+table.cell(dashboard, 1, 2,
+     (pnlSimulated >= 0 ? "+" : "") + str.tostring(pnlSimulated, "#.##") + "$ (" +
+     (totalPnLPct >= 0 ? "+" : "") + str.tostring(totalPnLPct, "#.##") + "%)",
+     text_color=totalColor, text_size=size.small, bgcolor=#0D1117)
+
+// Ліміти
+table.cell(dashboard, 0, 3, "⚠️ Daily Loss Limit", text_color=#8B949E, text_size=size.small, bgcolor=#0D1117)
+table.cell(dashboard, 1, 3, "-$" + str.tostring(dailyLossLimit, "#.##") + " (-" + str.tostring(DAILY_LOSS_PCT*100, "#.#") + "%)",
+     text_color=clrYellow, text_size=size.small, bgcolor=#0D1117)
+
+table.cell(dashboard, 0, 4, "🛑 Max Loss Limit", text_color=#8B949E, text_size=size.small, bgcolor=#0D1117)
+table.cell(dashboard, 1, 4, "-$" + str.tostring(maxLossLimit, "#.##") + " (-" + str.tostring(MAX_LOSS_PCT*100, "#.#") + "%)",
+     text_color=clrRed, text_size=size.small, bgcolor=#0D1117)
+
+table.cell(dashboard, 0, 5, "🎯 Profit Target", text_color=#8B949E, text_size=size.small, bgcolor=#0D1117)
+table.cell(dashboard, 1, 5, "+$" + str.tostring(profitTarget, "#.##") + " (+" + str.tostring(PROFIT_TARGET_PCT*100, "#.#") + "%)",
+     text_color=clrGreen, text_size=size.small, bgcolor=#0D1117)
+
+table.cell(dashboard, 0, 6, "🎲 Ризик/угода", text_color=#8B949E, text_size=size.small, bgcolor=#0D1117)
+table.cell(dashboard, 1, 6, "$" + str.tostring(riskPerTrade, "#.##") + " (" + str.tostring(RISK_PER_TRADE*100, "#.#") + "%)",
+     text_color=clrBlue, text_size=size.small, bgcolor=#0D1117)
+
+// Статус
+string statusText = profitReached      ? "✅ЦІЛЬ ДОСЯГНУТА!" :
+                    totalLimitBreached ? "🚫 СТОП — MAX LOSS!" :
+                    dailyLimitBreached ? "🚫 СТОП — DAILY LOSS!" :
+                    totalWarning       ? "⚠️ ОБЕРЕЖНО — БЛИЗЬКО!" :
+                    dailyWarning       ? "⚠️ ДЕННИЙ ЛІМІТ -75%" :
+                                         "✅ В НОРМІ"
+color statusColor = profitReached      ? #00E676 :
+                    totalLimitBreached ? clrRed :
+                    dailyLimitBreached ? clrRed :
+                    totalWarning       ? clrYellow :
+                    dailyWarning       ? clrYellow :
+                                         clrGreen
+
+table.cell(dashboard, 0, 7, "📍 СТАТУС", text_color=#8B949E, text_size=size.small, bgcolor=#161B22)
+table.cell(dashboard, 1, 7, statusText, text_color=statusColor, text_size=size.small, bgcolor=#161B22)
+
+// Залишок до ліміту
+float remainingDaily = dailyLossLimit + dailyPnL
+float remainingTotal = maxLossLimit + pnlSimulated
+table.cell(dashboard, 0, 8, "📏 До денного ліміту", text_color=#8B949E, text_size=size.small, bgcolor=#0D1117)
+table.cell(dashboard, 1, 8, "$" + str.tostring(math.max(remainingDaily, 0), "#.##"),
+     text_color=remainingDaily < dailyLossLimit * 0.25 ? clrRed : clrGray,
+     text_size=size.small, bgcolor=#0D1117)
+
+// ─── АЛЕРТИ ──────────────────────────────────────────────────
+alertcondition(dailyWarning and not dailyWarning[1],
+     "⚠️ Daily Loss -75%",
+     "Увага! Денний збиток досяг 75% від ліміту. Будь обережний!")
+
+alertcondition(dailyLimitBreached and not dailyLimitBreached[1],
+     "🚫 DAILY LOSS LIMIT BREACH",
+     "СТОП ТОРГІВЛЮ! Денний ліміт збитку вичерпано (-5%). Правило FTMO порушено!")
+
+alertcondition(totalWarning and not totalWarning[1],
+     "⚠️ Total Loss -75%",
+     "Увага! Загальний збиток досяг 75% від максимального ліміту!")
+
+alertcondition(totalLimitBreached and not totalLimitBreached[1],
+     "🚫 MAX LOSS LIMIT BREACH",
+     "СТОП ТОРГІВЛЮ! Максимальний ліміт збитку вичерпано (-10%). Рахунок умовно закрито!")
+
+alertcondition(profitReached and not profitReached[1],
+     "🎯 PROFIT TARGET REACHED!",
+     "Вітаю! Ціль прибутку досягнута (+10%). Челендж умовно пройдено!")

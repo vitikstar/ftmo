@@ -1,0 +1,298 @@
+//@version=5
+indicator("FTMO Risk Manager v3", overlay=false)
+
+// ═══════════════════════════════════════════════════════════
+//  FTMO RISK MANAGER v3
+//  + Універсальний калькулятор розміру позиції
+// ═══════════════════════════════════════════════════════════
+
+// ─── ГРУПА 1: БАЛАНС ─────────────────────────────────────────
+var float i_balance = input.float(
+     defval  = 100.0,
+     title   = "💰 Початковий баланс ($)",
+     minval  = 1.0,
+     step    = 10.0,
+     group   = "💰 Баланс рахунку",
+     tooltip = "Реальний баланс без плеча. Наприклад: $100")
+
+// ─── ГРУПА 2: ПРАВИЛА FTMO ────────────────────────────────────
+var float i_dailyLossPct = input.float(
+     defval  = 5.0,
+     title   = "Max Daily Loss (%)",
+     minval  = 0.1, maxval = 20.0, step = 0.5,
+     group   = "📏 Правила FTMO",
+     tooltip = "FTMO стандарт: 5%")
+
+var float i_maxLossPct = input.float(
+     defval  = 10.0,
+     title   = "Max Total Loss (%)",
+     minval  = 0.1, maxval = 50.0, step = 0.5,
+     group   = "📏 Правила FTMO",
+     tooltip = "FTMO стандарт: 10%")
+
+var float i_profitTargetPct = input.float(
+     defval  = 10.0,
+     title   = "Profit Target (%)",
+     minval  = 0.1, maxval = 100.0, step = 0.5,
+     group   = "📏 Правила FTMO",
+     tooltip = "FTMO стандарт: 10%")
+
+var float i_riskPerTradePct = input.float(
+     defval  = 1.0,
+     title   = "Ризик на 1 угоду (%)",
+     minval  = 0.1, maxval = 5.0, step = 0.1,
+     group   = "📏 Правила FTMO",
+     tooltip = "Рекомендовано 1-2%")
+
+var int i_maxDailyTrades = input.int(
+     defval  = 5,
+     title   = "Макс. угод на день",
+     minval  = 1, maxval = 50, step = 1,
+     group   = "📏 Правила FTMO",
+     tooltip = "Ліміт угод для контролю овертрейдингу")
+
+// ─── ГРУПА 3: ПОТОЧНИЙ P&L ────────────────────────────────────
+var float i_totalPnL = input.float(
+     defval  = 0.0,
+     title   = "Загальний P&L ($)",
+     minval  = -100000.0, maxval = 100000.0, step = 0.01,
+     group   = "📊 Поточний стан рахунку",
+     tooltip = "Оновлюй після кожної угоди. Збиток = від'ємне число")
+
+var float i_dailyPnL = input.float(
+     defval  = 0.0,
+     title   = "Денний P&L ($)",
+     minval  = -100000.0, maxval = 100000.0, step = 0.01,
+     group   = "📊 Поточний стан рахунку",
+     tooltip = "Скидай на 0 щодня")
+
+var int i_dailyTradesCount = input.int(
+     defval  = 0,
+     title   = "Угод сьогодні (кількість)",
+     minval  = 0, maxval = 200, step = 1,
+     group   = "📊 Поточний стан рахунку",
+     tooltip = "Скидай на 0 щодня")
+
+// ─── ГРУПА 4: КАЛЬКУЛЯТОР ПОЗИЦІЇ ────────────────────────────
+var string i_instrType = input.string(
+     defval  = "Forex (пункти)",
+     title   = "Тип інструменту",
+     options = ["Forex (пункти)", "Крипто/Індекси (ціна)"],
+     group   = "🧮 Калькулятор розміру позиції",
+     tooltip = "Forex: SL в пунктах (pip). Крипто/Індекси: SL в одиницях ціни ($)")
+
+var float i_slSize = input.float(
+     defval  = 20.0,
+     title   = "Stop Loss (пункти або $ ціни)",
+     minval  = 0.1,
+     step    = 1.0,
+     group   = "🧮 Калькулятор розміру позиції",
+     tooltip = "Forex: скільки пунктів до SL. Крипто: різниця в ціні між входом і SL")
+
+var float i_pipValue = input.float(
+     defval  = 10.0,
+     title   = "Вартість 1 пункту на 1 лот ($) [тільки для Forex]",
+     minval  = 0.001,
+     step    = 0.1,
+     group   = "🧮 Калькулятор розміру позиції",
+     tooltip = "EUR/USD = $10, GBP/USD = $10, USD/JPY ≈ $9.1. Для крипто/індексів не важливо")
+
+var float i_contractSize = input.float(
+     defval  = 1.0,
+     title   = "Розмір контракту [для Крипто/Індексів]",
+     minval  = 0.000001,
+     step    = 0.1,
+     group   = "🧮 Калькулятор розміру позиції",
+     tooltip = "BTC = 1, ETH = 1, NAS100 = 1. Зазвичай 1 якщо торгуєш 1 одиницю")
+
+// ─── ГРУПА 5: ВІДОБРАЖЕННЯ ────────────────────────────────────
+var bool i_showChart    = input.bool(true,  "Показувати лінії лімітів",        group = "🎨 Відображення")
+var bool i_showWarnings = input.bool(true,  "Попередження при 75% від ліміту", group = "🎨 Відображення")
+
+// ─── РОЗРАХУНОК ЛІМІТІВ ──────────────────────────────────────
+float dailyLossLimit = i_balance * (i_dailyLossPct    / 100)
+float maxLossLimit   = i_balance * (i_maxLossPct      / 100)
+float profitTarget   = i_balance * (i_profitTargetPct / 100)
+float riskPerTrade   = i_balance * (i_riskPerTradePct / 100)
+float currentEquity  = i_balance + i_totalPnL
+
+// ─── КАЛЬКУЛЯТОР РОЗМІРУ ПОЗИЦІЇ ─────────────────────────────
+// Forex:         лот = riskPerTrade / (SL_пунктів * вартість_пункту)
+// Крипто/індекси: кількість = riskPerTrade / (SL_в_ціні * розмір_контракту)
+float positionSize = i_instrType == "Forex (пункти)"
+     ? riskPerTrade / (i_slSize * i_pipValue)
+     : riskPerTrade / (i_slSize * i_contractSize)
+
+string posLabel = i_instrType == "Forex (пункти)" ? " лот" : " од."
+
+// Також рахуємо з урахуванням залишку денного ліміту
+float remainingDaily    = dailyLossLimit + i_dailyPnL
+float remainingTotal    = maxLossLimit   + i_totalPnL
+float safeRisk          = math.min(riskPerTrade, math.max(remainingDaily, 0), math.max(remainingTotal, 0))
+float positionSizeSafe  = i_instrType == "Forex (пункти)"
+     ? safeRisk / (i_slSize * i_pipValue)
+     : safeRisk / (i_slSize * i_contractSize)
+
+// ─── СТАТУСИ ─────────────────────────────────────────────────
+bool dailyLimitBreached = i_dailyPnL <= -dailyLossLimit
+bool totalLimitBreached = i_totalPnL <= -maxLossLimit
+bool profitReached      = i_totalPnL >= profitTarget
+bool dailyWarning       = i_showWarnings and (i_dailyPnL <= -(dailyLossLimit * 0.75)) and not dailyLimitBreached
+bool totalWarning       = i_showWarnings and (i_totalPnL <= -(maxLossLimit   * 0.75)) and not totalLimitBreached
+bool tradesLimitReached = i_dailyTradesCount >= i_maxDailyTrades
+
+float remainingToTarget = profitTarget - i_totalPnL
+float dailyPnLPct       = i_dailyPnL / i_balance * 100
+float totalPnLPct       = i_totalPnL / i_balance * 100
+
+// ─── ГРАФІК ──────────────────────────────────────────────────
+hline(i_showChart ? profitTarget    : na, "🎯 Profit Target", color=#00C853, linestyle=hline.style_dashed, linewidth=1)
+hline(i_showChart ? 0               : na, "Breakeven",        color=#546E7A, linestyle=hline.style_solid,  linewidth=1)
+hline(i_showChart ? -dailyLossLimit : na, "⚠️ Daily Limit",  color=#FFD600, linestyle=hline.style_dashed, linewidth=1)
+hline(i_showChart ? -maxLossLimit   : na, "🛑 Max Loss",      color=#FF1744, linestyle=hline.style_dashed, linewidth=2)
+
+plot(i_totalPnL, "Total P&L",
+     color     = i_totalPnL >= 0 ? #00C853 : #FF1744,
+     linewidth = 2)
+
+plot(i_dailyPnL, "Daily P&L",
+     color     = i_dailyPnL >= 0 ? color.new(#2196F3, 60) : color.new(#FF9800, 60),
+     linewidth = 1,
+     style     = plot.style_area)
+
+// ─── ТАБЛИЦЯ ─────────────────────────────────────────────────
+var table dash = table.new(
+     position     = position.top_right,
+     columns      = 2,
+     rows         = 16,
+     bgcolor      = #0D1117,
+     border_color = #30363D,
+     border_width = 1,
+     frame_color  = #58A6FF,
+     frame_width  = 1)
+
+f_row(int row, string label, string val, color valColor) =>
+    table.cell(dash, 0, row, label,
+         text_color  = #8B949E, text_size = size.small,
+         bgcolor     = row % 2 == 0 ? #0D1117 : #161B22,
+         text_halign = text.align_left)
+    table.cell(dash, 1, row, val,
+         text_color  = valColor, text_size = size.small,
+         bgcolor     = row % 2 == 0 ? #0D1117 : #161B22,
+         text_halign = text.align_right)
+
+f_header(int row, string label, color bg) =>
+    table.cell(dash, 0, row, label,
+         text_color  = #FFFFFF, text_size = size.small,
+         bgcolor     = bg, text_halign = text.align_center)
+    table.cell(dash, 1, row, "",
+         text_color  = #FFFFFF, text_size = size.small,
+         bgcolor     = bg, text_halign = text.align_center)
+
+// ── Заголовок
+table.cell(dash, 0, 0, "⚡ FTMO RISK MANAGER v3",
+     text_color = #58A6FF, text_size = size.normal,
+     bgcolor = #161B22, text_halign = text.align_center)
+table.cell(dash, 1, 0, "Equity: $" + str.tostring(currentEquity, "#.##"),
+     text_color = currentEquity >= i_balance ? #00C853 : #FF1744,
+     text_size  = size.normal, bgcolor = #161B22, text_halign = text.align_center)
+
+// ── P&L блок
+f_row(1, "📅 Денний P&L",
+     (i_dailyPnL >= 0 ? "+" : "") + str.tostring(i_dailyPnL, "#.##") +
+     "$ (" + (dailyPnLPct >= 0 ? "+" : "") + str.tostring(dailyPnLPct, "#.##") + "%)",
+     dailyLimitBreached ? #FF1744 : dailyWarning ? #FFD600 : #00C853)
+
+f_row(2, "💰 Загальний P&L",
+     (i_totalPnL >= 0 ? "+" : "") + str.tostring(i_totalPnL, "#.##") +
+     "$ (" + (totalPnLPct >= 0 ? "+" : "") + str.tostring(totalPnLPct, "#.##") + "%)",
+     totalLimitBreached ? #FF1744 : totalWarning ? #FFD600 : profitReached ? #00E676 : #00C853)
+
+f_row(3, "📏 До денного ліміту",
+     "$" + str.tostring(math.max(remainingDaily, 0), "#.##"),
+     remainingDaily <= dailyLossLimit * 0.25 ? #FF1744 : remainingDaily <= dailyLossLimit * 0.5 ? #FFD600 : #8B949E)
+
+f_row(4, "🛑 До макс. збитку",
+     "$" + str.tostring(math.max(remainingTotal, 0), "#.##"),
+     remainingTotal <= maxLossLimit * 0.25 ? #FF1744 : remainingTotal <= maxLossLimit * 0.5 ? #FFD600 : #8B949E)
+
+f_row(5, "🎯 До цілі прибутку",
+     profitReached ? "✅ ДОСЯГНУТО!" : "$" + str.tostring(math.max(remainingToTarget, 0), "#.##"),
+     profitReached ? #00E676 : #2196F3)
+
+f_row(6, "🔢 Угод сьогодні",
+     str.tostring(i_dailyTradesCount) + " / " + str.tostring(i_maxDailyTrades),
+     tradesLimitReached ? #FF1744 : i_dailyTradesCount >= i_maxDailyTrades - 1 ? #FFD600 : #00C853)
+
+// ── Розділювач — калькулятор
+f_header(7, "🧮 КАЛЬКУЛЯТОР ПОЗИЦІЇ", #1C2333)
+
+// ── Параметри
+f_row(8,  "Інструмент",
+     i_instrType == "Forex (пункти)" ? "Forex" : "Крипто/Індекси",
+     #8B949E)
+
+f_row(9,  "Stop Loss",
+     str.tostring(i_slSize, "#.##") + (i_instrType == "Forex (пункти)" ? " pip" : " $"),
+     #8B949E)
+
+f_row(10, "Ризик на угоду",
+     "$" + str.tostring(riskPerTrade, "#.##") + " (" + str.tostring(i_riskPerTradePct, "#.#") + "%)",
+     #2196F3)
+
+// ── Розмір позиції (за стандартним ризиком)
+f_row(11, "📐 Розмір позиції",
+     str.tostring(positionSize, "#.####") + posLabel,
+     dailyLimitBreached or totalLimitBreached ? #FF1744 : #00E676)
+
+// ── Безпечний розмір з урахуванням залишку
+bool sizeReduced = positionSizeSafe < positionSize
+f_row(12, "🛡 Безпечний розмір",
+     str.tostring(positionSizeSafe, "#.####") + posLabel + (sizeReduced ? " ⚠️" : " ✅"),
+     sizeReduced ? #FFD600 : #00C853)
+
+f_row(13, "💵 Реальний ризик",
+     "$" + str.tostring(safeRisk, "#.##"),
+     sizeReduced ? #FFD600 : #00C853)
+
+// ── Ліміти довідково
+f_header(14, "📋 ЛІМІТИ РАХУНКУ", #1C2333)
+
+f_row(15, "Daily / Max / Target",
+     "-$" + str.tostring(dailyLossLimit, "#.#") +
+     " / -$" + str.tostring(maxLossLimit, "#.#") +
+     " / +$" + str.tostring(profitTarget, "#.#"),
+     #546E7A)
+
+// ── Статус (окрема таблиця знизу)
+string statusText =
+     totalLimitBreached  ? "🚫 СТОП — MAX LOSS BREACH!" :
+     dailyLimitBreached  ? "🚫 СТОП — DAILY LOSS BREACH!" :
+     tradesLimitReached  ? "🚫 СТОП — ЛІМІТ УГОД!" :
+     profitReached       ? "✅ ЦІЛЬ ДОСЯГНУТА! СТОП." :
+     totalWarning        ? "⚠️ ОБЕРЕЖНО — TOTAL -75%" :
+     dailyWarning        ? "⚠️ ОБЕРЕЖНО — DAILY -75%" :
+                           "✅ ВСЕ В НОРМІ"
+
+color statusBg =
+     totalLimitBreached or dailyLimitBreached or tradesLimitReached ? color.new(#FF1744, 60) :
+     profitReached       ? color.new(#00C853, 60) :
+     totalWarning or dailyWarning ? color.new(#FFD600, 70) :
+     color.new(#00C853, 85)
+
+var table statusBar = table.new(position.bottom_right, 1, 1,
+     frame_color = #30363D, frame_width = 1)
+
+table.cell(statusBar, 0, 0, statusText,
+     text_color  = #FFFFFF,
+     text_size   = size.normal,
+     bgcolor     = statusBg,
+     text_halign = text.align_center)
+
+// ─── АЛЕРТИ ──────────────────────────────────────────────────
+alertcondition(dailyWarning,        "⚠️ Daily Loss 75%",     "Увага! Денний збиток досяг 75% від ліміту. Будь обережний!")
+alertcondition(dailyLimitBreached,  "🚫 DAILY LOSS LIMIT",   "СТОП! Денний ліміт збитку вичерпано. Більше не торгуй сьогодні!")
+alertcondition(totalWarning,        "⚠️ Total Loss 75%",     "Увага! Загальний збиток досяг 75% від максимального ліміту!")
+alertcondition(totalLimitBreached,  "🚫 MAX LOSS BREACH",    "СТОП! Максимальний збиток вичерпано. Рахунок умовно закрито!")
+alertcondition(tradesLimitReached,  "🚫 Ліміт угод",         "Сьогодні вже досягнуто максимальну кількість угод. СТОП торгівля!")
+alertcondition(profitReached,       "🎯 PROFIT TARGET!",     "Вітаю! Ціль прибутку досягнута. Челендж умовно пройдено!")

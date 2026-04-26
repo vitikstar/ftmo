@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Торгова Стратегія — Viktor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid #21262d;
+    padding-bottom: 32px;
+    margin-bottom: 40px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f0f6fc;
+    margin-bottom: 8px;
+  }
+  .header p { color: #8b949e; font-size: 14px; }
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 6px;
+    margin-top: 8px;
+  }
+  .badge-green { background: #1a3a2a; color: #3fb950; border: 1px solid #238636; }
+  .badge-blue  { background: #1b2a3b; color: #58a6ff; border: 1px solid #1f6feb; }
+  .badge-orange{ background: #2d1e0e; color: #d29922; border: 1px solid #9e6a03; }
+  .badge-red   { background: #3d1a1a; color: #f85149; border: 1px solid #da3633; }
+
+  /* Section */
+  .section { margin-bottom: 40px; }
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f0f6fc;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #21262d;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .num {
+    background: #21262d;
+    color: #8b949e;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Cards grid */
+  .grid { display: grid; gap: 12px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .card {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .card h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .card .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f0f6fc;
+  }
+  .card .value.green { color: #3fb950; }
+  .card .value.red   { color: #f85149; }
+  .card .value.blue  { color: #58a6ff; }
+  .card .value.orange{ color: #d29922; }
+  .card .sub {
+    font-size: 12px;
+    color: #8b949e;
+    margin-top: 2px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    background: #21262d;
+    color: #8b949e;
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #21262d;
+    color: #e6edf3;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #1c2128; }
+  .tbl-wrap {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  /* Steps */
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #21262d;
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    width: 28px;
+    height: 28px;
+    background: #21262d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #58a6ff;
+    flex-shrink: 0;
+  }
+  .step-content h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f0f6fc;
+    margin-bottom: 4px;
+  }
+  .step-content p {
+    font-size: 13px;
+    color: #8b949e;
+  }
+  .step-content code {
+    background: #21262d;
+    color: #79c0ff;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: monospace;
+  }
+
+  /* Checklist */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #e6edf3;
+    padding: 10px 14px;
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 6px;
+  }
+  .checklist li .icon {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #30363d;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .checklist li.green-item { border-color: #238636; }
+  .checklist li.red-item   { border-color: #da3633; }
+  .checklist li.blue-item  { border-color: #1f6feb; }
+
+  /* Scenario box */
+  .scenario {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .scenario-header {
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .scenario-header.bull { background: #1a3a2a; color: #3fb950; }
+  .scenario-header.bear { background: #3d1a1a; color: #f85149; }
+  .scenario-body {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #8b949e;
+  }
+  .scenario-body strong { color: #e6edf3; }
+
+  /* Alert box */
+  .alert {
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 10px;
+  }
+  .alert.warning { background: #2d1e0e; border: 1px solid #9e6a03; color: #d29922; }
+  .alert.danger  { background: #3d1a1a; border: 1px solid #da3633; color: #f85149; }
+  .alert.info    { background: #1b2a3b; border: 1px solid #1f6feb; color: #58a6ff; }
+  .alert.success { background: #1a3a2a; border: 1px solid #238636; color: #3fb950; }
+
+  /* Progress bar */
+  .progress-wrap { margin-top: 8px; }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #8b949e;
+    margin-bottom: 4px;
+  }
+  .progress-bar {
+    height: 6px;
+    background: #21262d;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: #238636;
+  }
+
+  /* EV calculator */
+  .ev-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 14px;
+    border-bottom: 1px solid #21262d;
+    font-size: 14px;
+  }
+  .ev-row:last-child { border-bottom: none; }
+  .ev-row .label { color: #8b949e; }
+  .ev-row .val   { font-weight: 600; color: #f0f6fc; }
+  .ev-row .val.pos { color: #3fb950; }
+  .ev-row .val.neg { color: #f85149; }
+
+  /* Footer */
+  .footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid #21262d;
+    text-align: center;
+    color: #8b949e;
+    font-size: 12px;
+  }
+
+  @media (max-width: 600px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Торгова Стратегія</h1>
+    <p>SMC Swing — FTMO Challenge 2-Step Swing | $10,000</p>
+    <div>
+      <span class="badge badge-blue">Swing</span>
+      <span class="badge badge-orange">SMC</span>
+      <span class="badge badge-green">FTMO Ready</span>
+    </div>
+  </div>
+
+  <!-- 1. Ключові параметри -->
+  <div class="section">
+    <div class="section-title"><span class="num">1</span> Ключові параметри системи</div>
+    <div class="grid grid-3" style="margin-bottom:12px">
+      <div class="card">
+        <h3>Ризик / угоду</h3>
+        <div class="value green">0.5%</div>
+        <div class="sub">$50 на $10,000</div>
+      </div>
+      <div class="card">
+        <h3>RR ціль</h3>
+        <div class="value blue">1 : 1.5</div>
+        <div class="sub">TP = $75 | SL = $50</div>
+      </div>
+      <div class="card">
+        <h3>WR ціль</h3>
+        <div class="value orange">60%+</div>
+        <div class="sub">Мінімум 55% для прибутку</div>
+      </div>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Угод / день</h3>
+        <div class="value">макс 2</div>
+        <div class="sub">Стоп після 2 збитків</div>
+      </div>
+      <div class="card">
+        <h3>EV / угоду</h3>
+        <div class="value green">+$22.5</div>
+        <div class="sub">При 60% WR і 1:1.5</div>
+      </div>
+      <div class="card">
+        <h3>Phase 1 ціль</h3>
+        <div class="value">~23 дні</div>
+        <div class="sub">45 угод × $22.5 = $1,000</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Інструменти -->
+  <div class="section">
+    <div class="section-title"><span class="num">2</span> Інструменти та таймфрейми</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Інструмент</th>
+            <th>HTF (bias)</th>
+            <th>MTF (структура)</th>
+            <th>LTF (вхід)</th>
+            <th>Пріоритет</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>XAUUSD</strong></td>
+            <td>Daily / W</td>
+            <td>4H</td>
+            <td>1H / 15M</td>
+            <td><span class="badge badge-green">Основний</span></td>
+          </tr>
+          <tr>
+            <td><strong>XAGUSD</strong></td>
+            <td>Daily / W</td>
+            <td>4H</td>
+            <td>1H / 15M</td>
+            <td><span class="badge badge-green">Основний</span></td>
+          </tr>
+          <tr>
+            <td><strong>EURUSD</strong></td>
+            <td>Daily</td>
+            <td>4H</td>
+            <td>1H</td>
+            <td><span class="badge badge-blue">Другорядний</span></td>
+          </tr>
+          <tr>
+            <td><strong>USDJPY</strong></td>
+            <td>Daily</td>
+            <td>4H</td>
+            <td>1H</td>
+            <td><span class="badge badge-blue">Другорядний</span></td>
+          </tr>
+          <tr>
+            <td><strong>NAS100</strong></td>
+            <td>Daily</td>
+            <td>4H</td>
+            <td>1H</td>
+            <td><span class="badge badge-blue">Другорядний</span></td>
+          </tr>
+          <tr>
+            <td><strong>GER40</strong></td>
+            <td>Daily</td>
+            <td>4H</td>
+            <td>1H</td>
+            <td><span class="badge badge-orange">Обережно</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="alert warning" style="margin-top:12px">
+      ⚠️ Торгувати ТІЛЬКИ ці інструменти. FRA40, AUDJPY, AUDUSD — заборонено.
+    </div>
+  </div>
+
+  <!-- 3. Алгоритм входу -->
+  <div class="section">
+    <div class="section-title"><span class="num">3</span> Алгоритм входу (покроково)</div>
+    <div class="card">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>HTF Bias (Daily / W)</h4>
+            <p>Визнач напрямок на Daily. Bullish = HH+HL структура. Bearish = LH+LL. Neutral = не торгуй.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>MTF Структура (4H)</h4>
+            <p>Знайди ключові зони на 4H: <code>OB</code> <code>FVG</code> <code>PDH/PDL</code>. Ціна має наближатись до зони в напрямку HTF bias.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>LTF підтвердження (1H / 15M)</h4>
+            <p>Чекай <code>CHoCH</code> або <code>BOS</code> на 1H в напрямку HTF bias. Без підтвердження — немає входу.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Confluence перевірка</h4>
+            <p>Вхід тільки якщо є мінімум 2 з 3: <code>OB</code> + <code>FVG</code> + <code>структурний рівень</code>. Один фактор = пропускаємо.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <h4>Розміщення ордеру</h4>
+            <p><strong>SL:</strong> за межу OB (структурна точка, не "на вічко") <br>
+            <strong>TP:</strong> наступний OB / FVG / рівень структури = природньо 1:1.5–2<br>
+            <strong>Розмір:</strong> $50 ÷ (відстань до SL в $) = кількість лотів</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <h4>Управління угодою</h4>
+            <p>На <code>+1R</code> переносимо SL в BE. Далі тримаємо до TP або структурного сигналу на розворот. Не закривати достроково без причини.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Сценарії XAUUSD (поточний) -->
+  <div class="section">
+    <div class="section-title"><span class="num">4</span> Поточні сценарії XAUUSD (квітень 2026)</div>
+    <div class="scenario">
+      <div class="scenario-header bull">▲ BULLISH сценарій</div>
+      <div class="scenario-body">
+        <strong>Умова:</strong> ціна тримає зону <strong>4638–4668</strong> (KEY S1) + 1H CHoCH вгору<br>
+        <strong>Вхід:</strong> після CHoCH на 1H від 4638–4668<br>
+        <strong>TP1:</strong> 4833 &nbsp;|&nbsp; <strong>TP2:</strong> 4891 &nbsp;|&nbsp; <strong>SL:</strong> нижче 4600<br>
+        <strong>HTF bias:</strong> bullish (від ATL 4099, HH+HL структура Daily)
+      </div>
+    </div>
+    <div class="scenario">
+      <div class="scenario-header bear">▼ BEARISH сценарій</div>
+      <div class="scenario-body">
+        <strong>Умова:</strong> 4H свічка закривається нижче <strong>4638</strong><br>
+        <strong>Вхід:</strong> ретест 4638 як резистанс зверху вниз<br>
+        <strong>TP1:</strong> 4553 &nbsp;|&nbsp; <strong>TP2:</strong> 4480 &nbsp;|&nbsp; <strong>SL:</strong> вище 4680<br>
+        <strong>Увага:</strong> ламає Daily bullish структуру → підвищений ризик
+      </div>
+    </div>
+    <div class="alert info">
+      📍 Поточна ціна ~4709. Знаходиться між KEY S1 (4668) і FVG (4711–4795). Чекаємо підтвердження напрямку.
+    </div>
+  </div>
+
+  <!-- 5. Ризик-менеджмент -->
+  <div class="section">
+    <div class="section-title"><span class="num">5</span> Ризик-менеджмент</div>
+
+    <div class="grid grid-2" style="margin-bottom:16px">
+      <div class="card">
+        <h3>Математичне очікування</h3>
+        <div class="ev-row"><span class="label">60% × $75</span><span class="val pos">+$45.00</span></div>
+        <div class="ev-row"><span class="label">40% × $50</span><span class="val neg">−$20.00</span></div>
+        <div class="ev-row"><span class="label">EV / угоду</span><span class="val pos">+$25.00</span></div>
+        <div class="ev-row"><span class="label">10 угод</span><span class="val pos">+$250</span></div>
+      </div>
+      <div class="card">
+        <h3>FTMO Phase 1 прогрес</h3>
+        <div style="margin-bottom:12px">
+          <div class="progress-wrap">
+            <div class="progress-label"><span>Денний DD</span><span>$500 ліміт</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:20%;background:#3fb950"></div></div>
+          </div>
+        </div>
+        <div class="ev-row"><span class="label">Ризик / угоду</span><span class="val">$50</span></div>
+        <div class="ev-row"><span class="label">2 збитки = денний стоп</span><span class="val red">−$100</span></div>
+        <div class="ev-row"><span class="label">До денного ліміту</span><span class="val green">×5 запас</span></div>
+      </div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Правило</th><th>Значення</th><th>Причина</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ризик / угоду</td>
+            <td><strong>0.5% ($50)</strong></td>
+            <td>5× запас до денного DD $500</td>
+          </tr>
+          <tr>
+            <td>Макс угод / день</td>
+            <td><strong>2</strong></td>
+            <td>Уникнення овертрейдингу</td>
+          </tr>
+          <tr>
+            <td>Стоп дня</td>
+            <td><strong>2 збитки поспіль</strong></td>
+            <td>Захист від revenge trading</td>
+          </tr>
+          <tr>
+            <td>BE перенос</td>
+            <td><strong>При +1R</strong></td>
+            <td>Гарантія збереження капіталу</td>
+          </tr>
+          <tr>
+            <td>Макс відкритих угод</td>
+            <td><strong>2</strong></td>
+            <td>Контроль кореляційного ризику</td>
+          </tr>
+          <tr>
+            <td>Корельовані пари</td>
+            <td><strong>Тільки одна</strong></td>
+            <td>XAUUSD + XAGUSD = одна позиція</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 6. FTMO правила -->
+  <div class="section">
+    <div class="section-title"><span class="num">6</span> FTMO 2-Step Swing — критичні правила</div>
+    <div class="grid grid-2">
+      <div>
+        <div class="alert danger">🔴 Денний DD: макс -$500 (5%). Порушення = миттєвий фейл.</div>
+        <div class="alert danger">🔴 Загальний DD: макс -$1,000 (10%) static від $10,000.</div>
+        <div class="alert warning">⚠️ Phase 1: потрібно $1,000 прибутку, мін 4 торгових дні.</div>
+        <div class="alert warning">⚠️ Phase 2: потрібно $500 прибутку, мін 4 торгових дні.</div>
+      </div>
+      <div>
+        <div class="alert success">✅ Swing: можна тримати позиції через вихідні і на новинах.</div>
+        <div class="alert success">✅ Best Day Rule: відсутня на 2-Step (є тільки на 1-Step).</div>
+        <div class="alert info">ℹ️ Леверидж: до 1:30 (Swing акаунт).</div>
+        <div class="alert info">ℹ️ Перший пейаут: повернення €89 вартості + 90% прибутку.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Щоденний чекліст -->
+  <div class="section">
+    <div class="section-title"><span class="num">7</span> Щоденний чекліст</div>
+    <div class="grid grid-2">
+      <div>
+        <p style="font-size:12px;color:#8b949e;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">Перед торгівлею</p>
+        <ul class="checklist">
+          <li class="blue-item"><span class="icon"></span>Перевірив HTF bias на Daily</li>
+          <li class="blue-item"><span class="icon"></span>Визначив ключові зони на 4H</li>
+          <li class="blue-item"><span class="icon"></span>Перевірив новинний календар</li>
+          <li class="blue-item"><span class="icon"></span>Знаю поточний баланс і залишок до DD</li>
+          <li class="blue-item"><span class="icon"></span>Виспаний, спокійний стан</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:12px;color:#8b949e;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">Перед кожним входом</p>
+        <ul class="checklist">
+          <li class="green-item"><span class="icon"></span>HTF bias співпадає з напрямком входу</li>
+          <li class="green-item"><span class="icon"></span>Є мінімум 2 confluence фактори</li>
+          <li class="green-item"><span class="icon"></span>LTF CHoCH або BOS підтверджений</li>
+          <li class="green-item"><span class="icon"></span>SL розміщений за структурою</li>
+          <li class="green-item"><span class="icon"></span>Розмір позиції = рівно $50 ризику</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:16px">
+      <p style="font-size:12px;color:#8b949e;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px">Заборонено</p>
+      <ul class="checklist">
+        <li class="red-item"><span class="icon"></span>Торгувати після 2 збитків поспіль</li>
+        <li class="red-item"><span class="icon"></span>Збільшувати позицію щоб "відбити"</li>
+        <li class="red-item"><span class="icon"></span>Торгувати інструменти поза списком (FRA40, AUDJPY тощо)</li>
+        <li class="red-item"><span class="icon"></span>Входити без LTF підтвердження "бо здається"</li>
+        <li class="red-item"><span class="icon"></span>Переносити SL далі щоб не закрило</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 8. Протокол перед FTMO -->
+  <div class="section">
+    <div class="section-title"><span class="num">8</span> Протокол перед новим FTMO рахунком</div>
+    <div class="card">
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>20 угод на демо з цими правилами</h4>
+            <p>Фіксований ризик $50, RR 1:1.5, тільки свої інструменти, макс 2/день</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Перевірка результату</h4>
+            <p>WR > 55% на 20 угодах → заходиш на FTMO. WR &lt; 55% → ще 20 угод, аналіз помилок.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Ведення журналу</h4>
+            <p>Кожна угода: символ, причина входу, що пішло не так / добре. Скидай CSV — аналіз разом.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Купуєш FTMO 2-Step Swing $10k (€89)</h4>
+            <p>Тільки після підтвердження WR на демо.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Стратегія складена: квітень 2026 &nbsp;|&nbsp; Оновлювати при зміні правил FTMO або торгового підходу
+  </div>
+
+</div>
+</body>
+</html>

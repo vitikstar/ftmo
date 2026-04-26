@@ -1,0 +1,94 @@
+//@version=5
+indicator("🛡 DailyLossGuard", overlay=true, max_lines_count=10, max_labels_count=50)
+
+// ═══════════════════════════════════════════════════════════
+//  НАЛАШТУВАННЯ
+// ═══════════════════════════════════════════════════════════
+var float startBalance    = input.float(10000.0, "💰 Баланс на початок дня ($)",  minval=1)
+var float maxLossPercent  = input.float(2.0,     "🔴 Максимальний збиток (%)",    minval=0.1, maxval=100)
+var float currentEquity   = input.float(0.0,     "📊 Поточний еквіті ($) — оновлюй вручну")
+
+// Попередження на % від ліміту
+var float warnPercent     = input.float(70.0,    "⚠️ Попередження при (% від ліміту)", minval=10, maxval=99)
+
+// ═══════════════════════════════════════════════════════════
+//  РОЗРАХУНКИ
+// ═══════════════════════════════════════════════════════════
+float equity         = currentEquity == 0 ? startBalance : currentEquity
+float dailyLoss      = startBalance - equity
+float dailyLossPct   = (dailyLoss / startBalance) * 100
+float maxLossMoney   = startBalance * (maxLossPercent / 100)
+float usedPercent    = math.min((dailyLoss / maxLossMoney) * 100, 100)  // скільки % від ліміту використано
+
+bool  isWarning      = usedPercent >= warnPercent and usedPercent < 100
+bool  isBlocked      = usedPercent >= 100
+
+// ═══════════════════════════════════════════════════════════
+//  АЛЕРТИ
+// ═══════════════════════════════════════════════════════════
+alertcondition(isWarning,  "⚠️ Наближення до ліміту збитку",  "DailyLossGuard: Збиток наближається до денного ліміту! Будь обережний.")
+alertcondition(isBlocked,  "🔴 ДЕННИЙ ЛІМІТ ДОСЯГНУТО",       "DailyLossGuard: СТОП! Денний ліміт збитку вичерпано. Більше не торгуй сьогодні.")
+
+// ═══════════════════════════════════════════════════════════
+//  ПАНЕЛЬ НА ГРАФІКУ
+// ═══════════════════════════════════════════════════════════
+
+// Кольори
+color bgColor       = isBlocked  ? color.new(color.red,    80) :
+                      isWarning  ? color.new(color.orange, 80) :
+                                   color.new(color.navy,   75)
+
+color statusColor   = isBlocked  ? color.red    :
+                      isWarning  ? color.orange :
+                                   color.lime
+
+color lossColor     = dailyLoss > 0 ? (isBlocked ? color.red : isWarning ? color.orange : color.yellow) : color.lime
+
+// Текст статусу
+string statusText   = isBlocked ? "🔴 ЗАБЛОКОВАНО — не торгуй!" :
+                      isWarning ? "⚠️  Обережно — близько до ліміту" :
+                                  "✅  Активний"
+
+// Прогрес-бар (текстовий)
+int    filledBars   = int(usedPercent / 10)
+string progressBar  = ""
+for i = 0 to 9
+    progressBar := progressBar + (i < filledBars ? "█" : "░")
+
+// Формуємо текст панелі
+string panelText =
+     "🛡  DAILYLOSSGUARD\n" +
+     "━━━━━━━━━━━━━━━━━━━━━━\n" +
+     "Баланс початку дня:  $" + str.tostring(startBalance,     "#,##0.00") + "\n" +
+     "Поточний еквіті:     $" + str.tostring(equity,           "#,##0.00") + "\n" +
+     "━━━━━━━━━━━━━━━━━━━━━━\n" +
+     "Збиток за день:      $" + str.tostring(math.max(dailyLoss, 0), "#,##0.00") +
+     "  (" + str.tostring(math.max(dailyLossPct, 0), "#0.00") + "%)\n" +
+     "Ліміт збитку:        $" + str.tostring(maxLossMoney,     "#,##0.00") +
+     "  (" + str.tostring(maxLossPercent, "#0.0") + "%)\n" +
+     "━━━━━━━━━━━━━━━━━━━━━━\n" +
+     "Використано ліміту:  " + str.tostring(math.min(usedPercent, 100), "#0.0") + "%\n" +
+     "[" + progressBar + "]\n" +
+     "━━━━━━━━━━━━━━━━━━━━━━\n" +
+     "Статус:  " + statusText
+
+// Малюємо панель (тільки на останній свічці)
+if barstate.islast
+    var label panel = na
+    label.delete(panel)
+    panel := label.new(
+         x            = bar_index + 3,
+         y            = high,
+         text         = panelText,
+         style        = label.style_label_left,
+         color        = bgColor,
+         textcolor    = color.white,
+         size         = size.normal,
+         yloc         = yloc.abovebar
+     )
+
+// ═══════════════════════════════════════════════════════════
+//  ГОРИЗОНТАЛЬНА ЛІНІЯ ЛІМІТУ (якщо є збиток)
+// ═══════════════════════════════════════════════════════════
+// Малюємо фонову зону небезпеки на графіку (візуально)
+bgcolor(isBlocked ? color.new(color.red, 90) : isWarning ? color.new(color.orange, 93) : na, title="Зона небезпеки")
