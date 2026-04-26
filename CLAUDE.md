@@ -83,6 +83,14 @@ daily/YYYY-MM-DD/analysis.md
 ```
 Формат — дивись `daily/TEMPLATE_analysis.md`
 
+**6. Опублікувати на сайт:**
+```bash
+python3 publish_review.py YYYY-MM-DD
+```
+Після успішної публікації — вивести посилання на огляд.
+
+**7. Git commit + push** (автоматично після будь-яких змін у ~/Трейдинг).
+
 **Важливо:** `fetch_news.py` витрачає ліміт API (25 запитів/день). Запускати лише якщо `news.md` за сьогодні відсутній.
 
 ## TradingView MCP
