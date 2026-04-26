@@ -4,7 +4,7 @@
     "ticker": "GLD",
     "label": "Gold (XAUUSD)",
     "articles_total": 50,
-    "avg_score": 0.1679,
+    "avg_score": 0.1651,
     "bias": "bullish~",
     "recent": [
       {
@@ -13,7 +13,7 @@
         "title": "GLD ETF Stock Price, SPDR Gold Share Current Price, News, Analysis",
         "url": "https://stocktwits.com/symbol/GLD/news",
         "label": "Neutral",
-        "score": 0.11855
+        "score": 0.146634
       },
       {
         "time": "20260420T213846",
@@ -21,7 +21,7 @@
         "title": "GLD ETF Falls 0.9%",
         "url": "https://www.moomoo.com/news/post/68568297/gld-etf-falls-0-9",
         "label": "Bearish",
-        "score": -0.629188
+        "score": -0.640185
       },
       {
         "time": "20260416T193847",
@@ -29,7 +29,7 @@
         "title": "GLD ETF Climbs 2.2%",
         "url": "https://www.moomoo.com/news/post/68308322/gld-etf-climbs-2-2",
         "label": "Bullish",
-        "score": 0.520177
+        "score": 0.539223
       },
       {
         "time": "20260407T131011",
@@ -37,7 +37,7 @@
         "title": "GLD ETF Falls 0.4%",
         "url": "https://www.moomoo.com/news/post/67938475/gld-etf-falls-0-4",
         "label": "Bearish",
-        "score": -0.387862
+        "score": -0.412698
       },
       {
         "time": "20260325T211042",
@@ -45,7 +45,7 @@
         "title": "GLD ETF Gains 3.0%",
         "url": "https://www.moomoo.com/news/post/67421046/gld-etf-gains-3-0",
         "label": "Bullish",
-        "score": 0.367562
+        "score": 0.363286
       }
     ]
   },
@@ -54,7 +54,7 @@
     "ticker": "SLV",
     "label": "Silver (XAGUSD)",
     "articles_total": 50,
-    "avg_score": 0.0902,
+    "avg_score": 0.087,
     "bias": "neutral",
     "recent": [
       {
@@ -63,7 +63,7 @@
         "title": "IShares Silver Trust Options Spot-On: On April 21st, 504.14K Contracts Were Traded, With 8.08 Million Open Interest",
         "url": "https://news.futunn.com/en/post/71822746/ishares-silver-trust-options-spot-on-on-april-21st-504",
         "label": "Somewhat-Bullish",
-        "score": 0.280276
+        "score": 0.260335
       },
       {
         "time": "20260421T160851",
@@ -71,7 +71,7 @@
         "title": "Silver Slides As Stocks Stay Firm, Hedges Cool",
         "url": "https://www.benzinga.com/markets/commodities/26/04/51945470/silver-slides-as-stocks-stay-firm-hedges-cool",
         "label": "Somewhat-Bearish",
-        "score": -0.213226
+        "score": -0.225292
       },
       {
         "time": "20260419T080859",
@@ -79,7 +79,7 @@
         "title": "iShares Silver Trust (SLV) and the Gold-to-Silver Ratio Analysis",
         "url": "https://www.harianbasis.co/en/silver-trust-gold-ratio-analysis",
         "label": "Bullish",
-        "score": 0.495283
+        "score": 0.476973
       },
       {
         "time": "20260417T103908",
@@ -87,7 +87,7 @@
         "title": "If You Invested $100 In iShares Silver Trust Stock 5 Years Ago, You Would Have This Much Today",
         "url": "https://www.sahmcapital.com/news/content/if-you-invested-100-in-ishares-silver-trust-stock-5-years-ago-you-would-have-this-much-today-2026-04-16",
         "label": "Bullish",
-        "score": 0.424223
+        "score": 0.413779
       },
       {
         "time": "20260417T101039",
@@ -95,7 +95,7 @@
         "title": "Silver Rebounds Near $80 As Ceasefire Eases Inflation Fears— 3 ETFs To Watch Now",
         "url": "https://www.benzinga.com/markets/commodities/26/04/51878156/silver-rebounds-near-80-as-ceasefire-eases-inflation-fears-3-etfs-to-watch-now",
         "label": "Somewhat-Bullish",
-        "score": 0.337982
+        "score": 0.30638
       }
     ]
   },
@@ -204,7 +204,7 @@
     "ticker": "QQQ",
     "label": "NAS100",
     "articles_total": 50,
-    "avg_score": 0.1212,
+    "avg_score": 0.1196,
     "bias": "neutral",
     "recent": [
       {
@@ -213,7 +213,7 @@
         "title": "GraniteShares YieldBOOST QQQ ETF announces weekly distribution of $0.1266",
         "url": "http://www.msn.com/en-us/money/topstocks/graniteshares-yieldboost-qqq-etf-announces-weekly-distribution-of-0-1266/ar-AA21FcvJ?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1",
         "label": "Somewhat-Bullish",
-        "score": 0.218531
+        "score": 0.216023
       },
       {
         "time": "20260424T204346",
@@ -221,7 +221,7 @@
         "title": "ProShares UltraPro QQQ ETF Options Spot-On: On April 24th, 433.61K Contracts Were Traded, With 1.52 Million Open Interest",
         "url": "https://news.futunn.com/en/post/72038975/proshares-ultrapro-qqq-etf-options-spot-on-on-april-24th",
         "label": "Neutral",
-        "score": 0.124438
+        "score": 0.128401
       },
       {
         "time": "20260424T204046",
@@ -229,7 +229,7 @@
         "title": "QQQ ETF Climbs 1.9%",
         "url": "https://www.moomoo.com/news/post/68863491/qqq-etf-climbs-1-9",
         "label": "Bullish",
-        "score": 0.510015
+        "score": 0.5146
       },
       {
         "time": "20260424T183837",
@@ -237,7 +237,7 @@
         "title": "GraniteShares YieldBOOST QQQ ETF announces weekly distribution of $0.1266",
         "url": "https://www.msn.com/en-us/money/topstocks/graniteshares-yieldboost-qqq-etf-announces-weekly-distribution-of-0-1266/ar-AA21FcvJ",
         "label": "Somewhat-Bullish",
-        "score": 0.316271
+        "score": 0.32686
       },
       {
         "time": "20260423T213832",
@@ -245,7 +245,7 @@
         "title": "The Resilience of Invesco QQQ ETF and Market Liquidity",
         "url": "https://www.harianbasis.co/en/resilience-invesco-qqq-etf-liquidity",
         "label": "Neutral",
-        "score": -0.13566
+        "score": -0.11759
       }
     ]
   },
@@ -254,7 +254,7 @@
     "ticker": "EWG",
     "label": "GER40",
     "articles_total": 33,
-    "avg_score": 0.0496,
+    "avg_score": 0.0484,
     "bias": "neutral",
     "recent": [
       {
@@ -263,7 +263,7 @@
         "title": "Largest Single-Country European Fund Targets German Equities",
         "url": "https://www.stockinvestor.com/largest-single-country-european-fund-targets-german-equities/amp/",
         "label": "Bullish",
-        "score": 0.446926
+        "score": 0.432832
       },
       {
         "time": "20260409T201200",
@@ -271,7 +271,7 @@
         "title": "Understanding Momentum Shifts in (EWG)",
         "url": "https://news.stocktradersdaily.com/news_release/8/Understanding_Momentum_Shifts_in_EWG_040926081202_1775779922.html",
         "label": "Neutral",
-        "score": 0.128378
+        "score": 0.107147
       },
       {
         "time": "20260303T185234",
@@ -279,7 +279,7 @@
         "title": "BlueStem Wealth Partners LLC Buys Shares of 79,545 iShares MSCI Germany ETF $EWG",
         "url": "https://www.defenseworld.net/2026/03/03/bluestem-wealth-partners-llc-buys-shares-of-79545-ishares-msci-germany-etf-ewg.html",
         "label": "Neutral",
-        "score": 0.133259
+        "score": 0.105297
       },
       {
         "time": "20260302T185234",
@@ -287,7 +287,7 @@
         "title": "Citigroup Inc. Buys 77,108 Shares of iShares MSCI Germany ETF $EWG",
         "url": "https://www.defenseworld.net/2026/03/02/citigroup-inc-buys-77108-shares-of-ishares-msci-germany-etf-ewg.html",
         "label": "Neutral",
-        "score": 0.116877
+        "score": 0.142413
       },
       {
         "time": "20260224T144000",
@@ -295,7 +295,7 @@
         "title": "(EWG) Movement Within Algorithmic Entry Frameworks",
         "url": "https://news.stocktradersdaily.com/news_release/81/EWG_Movement_Within_Algorithmic_Entry_Frameworks_022426024001_1771962001.html",
         "label": "Neutral",
-        "score": 0.134472
+        "score": 0.137131
       }
     ]
   }

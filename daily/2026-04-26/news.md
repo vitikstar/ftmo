@@ -1,8 +1,8 @@
 # Новини 2026-04-26
-_Отримано: 13:15 UTC_
+_Отримано: 14:38 UTC_
 
 ## Gold (XAUUSD)
-**Bias:** bullish~  |  avg score: +0.168  |  статей: 50
+**Bias:** bullish~  |  avg score: +0.165  |  статей: 50
 
 | Час | Джерело | Sentiment | Заголовок |
 |-----|---------|-----------|-----------|
@@ -21,7 +21,7 @@ _Отримано: 13:15 UTC_
 - [GLD ETF Gains 3.0%](https://www.moomoo.com/news/post/67421046/gld-etf-gains-3-0) _Moomoo, -31д_
 
 ## Silver (XAGUSD)
-**Bias:** neutral  |  avg score: +0.090  |  статей: 50
+**Bias:** neutral  |  avg score: +0.087  |  статей: 50
 
 | Час | Джерело | Sentiment | Заголовок |
 |-----|---------|-----------|-----------|
@@ -47,7 +47,7 @@ _Отримано: 13:15 UTC_
 | -1д | GlobeNewswire | neutral | Paul Mueller Company Announces Its First Quarter Earnings of 2026 |
 | -1д | GlobeNewswire | neutral | Press Release: Sanofi successfully prices 2.3 billion of bond issue |
 | -1д | Benzinga | neutral | Press Release: Sanofi successfully prices 2.3 billion of bond issue |
-| -1д | Cointelegraph | neutral | ECB Digital Euro Standards Deals Target Integration Costs |
+| -2д | Cointelegraph | neutral | ECB Digital Euro Standards Deals Target Integration Costs |
 | -2д | GlobeNewswire | neutral | JSC 'Siguldas ciltslietu un mākslīgās apsēklošanas stacija' resolution… |
 
 **Останні статті:**
@@ -55,7 +55,7 @@ _Отримано: 13:15 UTC_
 - [Paul Mueller Company Announces Its First Quarter Earnings of 2026](https://www.globenewswire.com/news-release/2026/04/24/3281096/6747/en/Paul-Mueller-Company-Announces-Its-First-Quarter-Earnings-of-2026.html) _GlobeNewswire, -1д_
 - [Press Release: Sanofi successfully prices 2.3 billion of bond issue](https://www.globenewswire.com/news-release/2026/04/24/3281028/0/en/Press-Release-Sanofi-successfully-prices-2-3-billion-of-bond-issue.html) _GlobeNewswire, -1д_
 - [Press Release: Sanofi successfully prices 2.3 billion of bond issue](https://www.benzinga.com/pressreleases/26/04/g52043335/press-release-sanofi-successfully-prices-2-3-billion-of-bond-issue) _Benzinga, -1д_
-- [ECB Digital Euro Standards Deals Target Integration Costs](https://cointelegraph.com/news/ecb-seeks-lower-digital-euro-adoption-costs-as-banks-face-multibillion-euro-burden) _Cointelegraph, -1д_
+- [ECB Digital Euro Standards Deals Target Integration Costs](https://cointelegraph.com/news/ecb-seeks-lower-digital-euro-adoption-costs-as-banks-face-multibillion-euro-burden) _Cointelegraph, -2д_
 - [JSC 'Siguldas ciltslietu un mākslīgās apsēklošanas stacija' resolutions to the A](https://www.globenewswire.com/news-release/2026/04/24/3280858/0/en/JSC-Siguldas-ciltslietu-un-m%C4%81ksl%C4%ABg%C4%81s-aps%C4%93klo%C5%A1anas-stacija-resolutions-to-the-Annual-Shareholders-Meeting-on-24-April-2026.html) _GlobeNewswire, -2д_
 
 ## USD/JPY
@@ -63,7 +63,7 @@ _Отримано: 13:15 UTC_
 
 | Час | Джерело | Sentiment | Заголовок |
 |-----|---------|-----------|-----------|
-| -21год | Motley Fool | neutral | Here's Why I Wouldn't Touch  ( XRP )  Ripple With a 10-Foot Pole |
+| -22год | Motley Fool | neutral | Here's Why I Wouldn't Touch  ( XRP )  Ripple With a 10-Foot Pole |
 | -1д | Motley Fool | BULLISH | Gentex  ( GNTX )  Q1 2026 Earnings Call Transcript |
 | -2д | Cointelegraph | neutral | Metaplanet Raises $50M in Zero-Interest Bonds to Buy Bitcoin |
 | -2д | GlobeNewswire | neutral | SOLID Q1 SALES - IGNITE PRIORITIES IN MOTION |
@@ -71,18 +71,18 @@ _Отримано: 13:15 UTC_
 
 **Останні статті:**
 
-- [Here's Why I Wouldn't Touch  ( XRP )  Ripple With a 10-Foot Pole](https://www.fool.com/investing/2026/04/25/heres-why-i-wouldnt-touch-xrp-ripple-with-a-10-foo/) _Motley Fool, -21год_
+- [Here's Why I Wouldn't Touch  ( XRP )  Ripple With a 10-Foot Pole](https://www.fool.com/investing/2026/04/25/heres-why-i-wouldnt-touch-xrp-ripple-with-a-10-foo/) _Motley Fool, -22год_
 - [Gentex  ( GNTX )  Q1 2026 Earnings Call Transcript](https://www.fool.com/earnings/call-transcripts/2026/04/24/gentex-gntx-q1-2026-earnings-call-transcript/) _Motley Fool, -1д_
 - [Metaplanet Raises $50M in Zero-Interest Bonds to Buy Bitcoin](https://cointelegraph.com/news/metaplanet-issues-50-million-in-zero-coupon-bonds-to-buy-more-bitcoin) _Cointelegraph, -2д_
 - [SOLID Q1 SALES - IGNITE PRIORITIES IN MOTION](https://www.globenewswire.com/news-release/2026/04/24/3280513/0/en/SOLID-Q1-SALES-IGNITE-PRIORITIES-IN-MOTION.html) _GlobeNewswire, -2д_
 - [Japan core inflation accelerates after five months as Iran war pushes energy pri](https://www.cnbc.com/2026/04/24/japan-cpi-march-inflation-iran-war-boj-rate.html) _CNBC, -2д_
 
 ## NAS100
-**Bias:** neutral  |  avg score: +0.121  |  статей: 50
+**Bias:** neutral  |  avg score: +0.120  |  статей: 50
 
 | Час | Джерело | Sentiment | Заголовок |
 |-----|---------|-----------|-----------|
-| -15год | MSN | bullish~ | GraniteShares YieldBOOST QQQ ETF announces weekly distribution of $0.1… |
+| -16год | MSN | bullish~ | GraniteShares YieldBOOST QQQ ETF announces weekly distribution of $0.1… |
 | -1д | 富途牛牛 | neutral | ProShares UltraPro QQQ ETF Options Spot-On: On April 24th, 433.61K Con… |
 | -1д | Moomoo | BULLISH | QQQ ETF Climbs 1.9% |
 | -1д | MSN | bullish~ | GraniteShares YieldBOOST QQQ ETF announces weekly distribution of $0.1… |
@@ -90,14 +90,14 @@ _Отримано: 13:15 UTC_
 
 **Останні статті:**
 
-- [GraniteShares YieldBOOST QQQ ETF announces weekly distribution of $0.1266](http://www.msn.com/en-us/money/topstocks/graniteshares-yieldboost-qqq-etf-announces-weekly-distribution-of-0-1266/ar-AA21FcvJ?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1) _MSN, -15год_
+- [GraniteShares YieldBOOST QQQ ETF announces weekly distribution of $0.1266](http://www.msn.com/en-us/money/topstocks/graniteshares-yieldboost-qqq-etf-announces-weekly-distribution-of-0-1266/ar-AA21FcvJ?apiversion=v2&domshim=1&noservercache=1&noservertelemetry=1&batchservertelemetry=1&renderwebcomponents=1&wcseo=1) _MSN, -16год_
 - [ProShares UltraPro QQQ ETF Options Spot-On: On April 24th, 433.61K Contracts Wer](https://news.futunn.com/en/post/72038975/proshares-ultrapro-qqq-etf-options-spot-on-on-april-24th) _富途牛牛, -1д_
 - [QQQ ETF Climbs 1.9%](https://www.moomoo.com/news/post/68863491/qqq-etf-climbs-1-9) _Moomoo, -1д_
 - [GraniteShares YieldBOOST QQQ ETF announces weekly distribution of $0.1266](https://www.msn.com/en-us/money/topstocks/graniteshares-yieldboost-qqq-etf-announces-weekly-distribution-of-0-1266/ar-AA21FcvJ) _MSN, -1д_
 - [The Resilience of Invesco QQQ ETF and Market Liquidity](https://www.harianbasis.co/en/resilience-invesco-qqq-etf-liquidity) _HarianBasis.co, -2д_
 
 ## GER40
-**Bias:** neutral  |  avg score: +0.050  |  статей: 33
+**Bias:** neutral  |  avg score: +0.048  |  статей: 33
 
 | Час | Джерело | Sentiment | Заголовок |
 |-----|---------|-----------|-----------|
