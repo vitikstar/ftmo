@@ -1,0 +1,302 @@
+{
+  "XAUUSD": {
+    "symbol": "XAUUSD",
+    "ticker": "GLD",
+    "label": "Gold (XAUUSD)",
+    "articles_total": 50,
+    "avg_score": 0.1613,
+    "bias": "bullish~",
+    "recent": [
+      {
+        "time": "20260424T080927",
+        "source": "Stocktwits",
+        "title": "GLD ETF Stock Price, SPDR Gold Share Current Price, News, Analysis",
+        "url": "https://stocktwits.com/symbol/GLD/news",
+        "label": "Neutral",
+        "score": 0.109607
+      },
+      {
+        "time": "20260420T213846",
+        "source": "Moomoo",
+        "title": "GLD ETF Falls 0.9%",
+        "url": "https://www.moomoo.com/news/post/68568297/gld-etf-falls-0-9",
+        "label": "Bearish",
+        "score": -0.612132
+      },
+      {
+        "time": "20260416T193847",
+        "source": "Moomoo",
+        "title": "GLD ETF Climbs 2.2%",
+        "url": "https://www.moomoo.com/news/post/68308322/gld-etf-climbs-2-2",
+        "label": "Bullish",
+        "score": 0.546381
+      },
+      {
+        "time": "20260407T131011",
+        "source": "Moomoo",
+        "title": "GLD ETF Falls 0.4%",
+        "url": "https://www.moomoo.com/news/post/67938475/gld-etf-falls-0-4",
+        "label": "Bearish",
+        "score": -0.393244
+      },
+      {
+        "time": "20260325T211042",
+        "source": "Moomoo",
+        "title": "GLD ETF Gains 3.0%",
+        "url": "https://www.moomoo.com/news/post/67421046/gld-etf-gains-3-0",
+        "label": "Bullish",
+        "score": 0.350705
+      }
+    ]
+  },
+  "XAGUSD": {
+    "symbol": "XAGUSD",
+    "ticker": "SLV",
+    "label": "Silver (XAGUSD)",
+    "articles_total": 50,
+    "avg_score": 0.0724,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260429T091023",
+        "source": "Invezz",
+        "title": "Silver price at risk as SLV ETF outflows jump ahead of FOMC decision",
+        "url": "https://invezz.com/news/2026/04/29/silver-price-at-risk-as-slv-etf-outflows-jump-ahead-of-fomc-decision/",
+        "label": "Bearish",
+        "score": -0.82846
+      },
+      {
+        "time": "20260428T230842",
+        "source": "富途牛牛",
+        "title": "IShares Silver Trust Options Spot-On: On April 28th, 421.93K Contracts Were Traded, With 8 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/72227363/ishares-silver-trust-options-spot-on-on-april-28th-421",
+        "label": "Neutral",
+        "score": 0.008319
+      },
+      {
+        "time": "20260421T200851",
+        "source": "富途牛牛",
+        "title": "IShares Silver Trust Options Spot-On: On April 21st, 504.14K Contracts Were Traded, With 8.08 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/71822746/ishares-silver-trust-options-spot-on-on-april-21st-504",
+        "label": "Somewhat-Bullish",
+        "score": 0.280566
+      },
+      {
+        "time": "20260421T160851",
+        "source": "Benzinga",
+        "title": "Silver Slides As Stocks Stay Firm, Hedges Cool",
+        "url": "https://www.benzinga.com/markets/commodities/26/04/51945470/silver-slides-as-stocks-stay-firm-hedges-cool",
+        "label": "Somewhat-Bearish",
+        "score": -0.218078
+      },
+      {
+        "time": "20260419T080859",
+        "source": "HarianBasis.co",
+        "title": "iShares Silver Trust (SLV) and the Gold-to-Silver Ratio Analysis",
+        "url": "https://www.harianbasis.co/en/silver-trust-gold-ratio-analysis",
+        "label": "Bullish",
+        "score": 0.469176
+      }
+    ]
+  },
+  "EURUSD": {
+    "symbol": "EURUSD",
+    "ticker": "FOREX:EUR",
+    "label": "EUR/USD",
+    "articles_total": 50,
+    "avg_score": 0.0631,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260429T214102",
+        "source": "Motley Fool",
+        "title": "Dana  ( DAN )  Q1 2026 Earnings Call Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/04/29/dana-dan-q1-2026-earnings-call-transcript/",
+        "label": "Neutral",
+        "score": 0.10785
+      },
+      {
+        "time": "20260429T162300",
+        "source": "Zacks Commentary",
+        "title": "Omnicom's Q1 Earnings Miss Estimates, Increase Year Over Year",
+        "url": "https://www.zacks.com/stock/news/2911144/omnicoms-q1-earnings-miss-estimates-increase-year-over-year",
+        "label": "Somewhat-Bullish",
+        "score": 0.209195
+      },
+      {
+        "time": "20260429T160400",
+        "source": "GlobeNewswire",
+        "title": "2026 Q1 Revenue Report",
+        "url": "https://www.globenewswire.com/news-release/2026/04/29/3284084/0/en/2026-Q1-Revenue-Report.html",
+        "label": "Neutral",
+        "score": 0.0
+      },
+      {
+        "time": "20260429T154500",
+        "source": "GlobeNewswire",
+        "title": "Michelin delivered a solid performance in the first quarter, the decline in revenue reflecting changes in exchange rates. In a highly uncertain environment, the Group is adapting its steering and maintaining its 2026 guidance.",
+        "url": "https://www.globenewswire.com/news-release/2026/04/29/3284043/0/en/Michelin-delivered-a-solid-performance-in-the-first-quarter-the-decline-in-revenue-reflecting-changes-in-exchange-rates-In-a-highly-uncertain-environment-the-Group-is-adapting-its-.html",
+        "label": "Neutral",
+        "score": -0.01055
+      },
+      {
+        "time": "20260429T150006",
+        "source": "Motley Fool",
+        "title": "Tradeweb  ( TW )  Q1 2026 Earnings Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/04/29/tradeweb-tw-q1-2026-earnings-transcript/",
+        "label": "Neutral",
+        "score": 0.105081
+      }
+    ]
+  },
+  "USDJPY": {
+    "symbol": "USDJPY",
+    "ticker": "FOREX:JPY",
+    "label": "USD/JPY",
+    "articles_total": 50,
+    "avg_score": 0.0577,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260429T221039",
+        "source": "Motley Fool",
+        "title": "MGM  ( MGM )  Q1 2026 Earnings Call Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/04/29/mgm-mgm-q1-2026-earnings-call-transcript/",
+        "label": "Neutral",
+        "score": 0.086177
+      },
+      {
+        "time": "20260429T155459",
+        "source": "Motley Fool",
+        "title": "American Assets  ( AAT )  Q1 2026 Earnings Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/04/29/american-assets-aat-q1-2026-earnings-transcript/",
+        "label": "Neutral",
+        "score": -0.001685
+      },
+      {
+        "time": "20260429T154500",
+        "source": "GlobeNewswire",
+        "title": "Michelin delivered a solid performance in the first quarter, the decline in revenue reflecting changes in exchange rates. In a highly uncertain environment, the Group is adapting its steering and maintaining its 2026 guidance.",
+        "url": "https://www.globenewswire.com/news-release/2026/04/29/3284043/0/en/Michelin-delivered-a-solid-performance-in-the-first-quarter-the-decline-in-revenue-reflecting-changes-in-exchange-rates-In-a-highly-uncertain-environment-the-Group-is-adapting-its-.html",
+        "label": "Neutral",
+        "score": -0.001717
+      },
+      {
+        "time": "20260428T191327",
+        "source": "Motley Fool",
+        "title": "A10 Networks ATEN Q2 2025 Earnings Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/04/28/a10-networks-aten-q2-2025-earnings-transcript/",
+        "label": "Neutral",
+        "score": 0.048969
+      },
+      {
+        "time": "20260428T160911",
+        "source": "Motley Fool",
+        "title": "Corning  ( GLW )  Q1 2025 Earnings Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/04/28/corning-glw-q1-2025-earnings-transcript/",
+        "label": "Neutral",
+        "score": 0.070477
+      }
+    ]
+  },
+  "NAS100": {
+    "symbol": "NAS100",
+    "ticker": "QQQ",
+    "label": "NAS100",
+    "articles_total": 50,
+    "avg_score": 0.1267,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260428T203836",
+        "source": "富途牛牛",
+        "title": "ProShares UltraPro QQQ ETF Options Spot-On: On April 28th, 226.39K Contracts Were Traded, With 1.39 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/72227381/proshares-ultrapro-qqq-etf-options-spot-on-on-april-28th",
+        "label": "Neutral",
+        "score": 0.142739
+      },
+      {
+        "time": "20260428T203835",
+        "source": "Moomoo",
+        "title": "QQQ ETF Falls 1.0%",
+        "url": "https://www.moomoo.com/news/post/69052611/qqq-etf-falls-1-0",
+        "label": "Bearish",
+        "score": -0.408936
+      },
+      {
+        "time": "20260427T204337",
+        "source": "富途牛牛",
+        "title": "ProShares UltraPro QQQ ETF Options Spot-On: On April 27th, 235.02K Contracts Were Traded, With 1.59 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/72139091/proshares-ultrapro-qqq-etf-options-spot-on-on-april-27th",
+        "label": "Neutral",
+        "score": 0.143856
+      },
+      {
+        "time": "20260427T133834",
+        "source": "CryptoRank",
+        "title": "Top 3 catalysts for Nasdaq 100 Index and QQQ ETF this week",
+        "url": "https://cryptorank.io/news/feed/c7074-top-3-catalysts-for-nasdaq-100-index-and-qqq-etf-this-week",
+        "label": "Bullish",
+        "score": 0.407643
+      },
+      {
+        "time": "20260427T123916",
+        "source": "TradingView",
+        "title": "Top 3 catalysts for Nasdaq 100 Index and QQQ ETF this week",
+        "url": "https://fr.tradingview.com/news/invezz%3A3648ea824094b%3A0-top-3-catalysts-for-nasdaq-100-index-and-qqq-etf-this-week/",
+        "label": "Bullish",
+        "score": 0.445388
+      }
+    ]
+  },
+  "GER40": {
+    "symbol": "GER40",
+    "ticker": "EWG",
+    "label": "GER40",
+    "articles_total": 33,
+    "avg_score": 0.0487,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260414T150923",
+        "source": "Stock Investor",
+        "title": "Largest Single-Country European Fund Targets German Equities",
+        "url": "https://www.stockinvestor.com/largest-single-country-european-fund-targets-german-equities/amp/",
+        "label": "Bullish",
+        "score": 0.437718
+      },
+      {
+        "time": "20260409T201200",
+        "source": "Stock Traders Daily",
+        "title": "Understanding Momentum Shifts in (EWG)",
+        "url": "https://news.stocktradersdaily.com/news_release/8/Understanding_Momentum_Shifts_in_EWG_040926081202_1775779922.html",
+        "label": "Neutral",
+        "score": 0.12151
+      },
+      {
+        "time": "20260303T185234",
+        "source": "Defense World",
+        "title": "BlueStem Wealth Partners LLC Buys Shares of 79,545 iShares MSCI Germany ETF $EWG",
+        "url": "https://www.defenseworld.net/2026/03/03/bluestem-wealth-partners-llc-buys-shares-of-79545-ishares-msci-germany-etf-ewg.html",
+        "label": "Neutral",
+        "score": 0.106913
+      },
+      {
+        "time": "20260302T185234",
+        "source": "Defense World",
+        "title": "Citigroup Inc. Buys 77,108 Shares of iShares MSCI Germany ETF $EWG",
+        "url": "https://www.defenseworld.net/2026/03/02/citigroup-inc-buys-77108-shares-of-ishares-msci-germany-etf-ewg.html",
+        "label": "Neutral",
+        "score": 0.121302
+      },
+      {
+        "time": "20260224T144000",
+        "source": "Stock Traders Daily",
+        "title": "(EWG) Movement Within Algorithmic Entry Frameworks",
+        "url": "https://news.stocktradersdaily.com/news_release/81/EWG_Movement_Within_Algorithmic_Entry_Frameworks_022426024001_1771962001.html",
+        "label": "Neutral",
+        "score": 0.145744
+      }
+    ]
+  }
+}
