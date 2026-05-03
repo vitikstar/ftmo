@@ -1,0 +1,302 @@
+{
+  "XAUUSD": {
+    "symbol": "XAUUSD",
+    "ticker": "GLD",
+    "label": "Gold (XAUUSD)",
+    "articles_total": 50,
+    "avg_score": 0.1822,
+    "bias": "bullish~",
+    "recent": [
+      {
+        "time": "20260430T224037",
+        "source": "Moomoo",
+        "title": "GLD ETF Climbs 1.5%",
+        "url": "https://www.moomoo.com/news/post/69257446/gld-etf-climbs-1-5",
+        "label": "Bullish",
+        "score": 0.396228
+      },
+      {
+        "time": "20260430T172300",
+        "source": "HarianBasis.co",
+        "title": "SPDR Gold Shares ETF Yields 159 Percent Return Over Five Years",
+        "url": "https://www.harianbasis.co/en/spdr-gold-shares-etf-returns-analysis",
+        "label": "Bullish",
+        "score": 0.861452
+      },
+      {
+        "time": "20260428T103928",
+        "source": "Moomoo",
+        "title": "GLD ETF Declines 0.8%",
+        "url": "https://www.moomoo.com/news/post/68960186/gld-etf-declines-0-8?futusource=news_newspage_recommend",
+        "label": "Somewhat-Bearish",
+        "score": -0.244864
+      },
+      {
+        "time": "20260424T080927",
+        "source": "Stocktwits",
+        "title": "GLD ETF Stock Price, SPDR Gold Share Current Price, News, Analysis",
+        "url": "https://stocktwits.com/symbol/GLD/news",
+        "label": "Neutral",
+        "score": 0.140352
+      },
+      {
+        "time": "20260420T213846",
+        "source": "Moomoo",
+        "title": "GLD ETF Falls 0.9%",
+        "url": "https://www.moomoo.com/news/post/68568297/gld-etf-falls-0-9",
+        "label": "Bearish",
+        "score": -0.640774
+      }
+    ]
+  },
+  "XAGUSD": {
+    "symbol": "XAGUSD",
+    "ticker": "SLV",
+    "label": "Silver (XAGUSD)",
+    "articles_total": 50,
+    "avg_score": 0.0726,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260502T020923",
+        "source": "Moomoo",
+        "title": "$iShares Silver Trust (SLV.US)$",
+        "url": "https://www.moomoo.com/community/feed/ishares-silver-trust-slv-us-116502574399494",
+        "label": "Neutral",
+        "score": 0.010846
+      },
+      {
+        "time": "20260501T040923",
+        "source": "Sahm",
+        "title": "Here's How Much You Would Have Made Owning iShares Silver Trust Stock In The Last 5 Years",
+        "url": "https://www.sahmcapital.com/news/content/heres-how-much-you-would-have-made-owning-ishares-silver-trust-stock-in-the-last-5-years-2026-04-30",
+        "label": "Bullish",
+        "score": 0.416484
+      },
+      {
+        "time": "20260429T153909",
+        "source": "TradingView",
+        "title": "Silver price at risk as SLV ETF outflows jump ahead of FOMC decision",
+        "url": "https://www.tradingview.com/news/invezz:bb675baaf094b:0-silver-price-at-risk-as-slv-etf-outflows-jump-ahead-of-fomc-decision/",
+        "label": "Bearish",
+        "score": -0.380624
+      },
+      {
+        "time": "20260429T091023",
+        "source": "Invezz",
+        "title": "Silver price at risk as SLV ETF outflows jump ahead of FOMC decision",
+        "url": "https://invezz.com/news/2026/04/29/silver-price-at-risk-as-slv-etf-outflows-jump-ahead-of-fomc-decision/",
+        "label": "Bearish",
+        "score": -0.805413
+      },
+      {
+        "time": "20260428T230842",
+        "source": "富途牛牛",
+        "title": "IShares Silver Trust Options Spot-On: On April 28th, 421.93K Contracts Were Traded, With 8 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/72227363/ishares-silver-trust-options-spot-on-on-april-28th-421",
+        "label": "Neutral",
+        "score": 0.006099
+      }
+    ]
+  },
+  "EURUSD": {
+    "symbol": "EURUSD",
+    "ticker": "FOREX:EUR",
+    "label": "EUR/USD",
+    "articles_total": 50,
+    "avg_score": 0.0632,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260501T190000",
+        "source": "Zacks Commentary",
+        "title": "Should You Buy, Hold, or Sell IonQ Stock Before Q1 Earnings?",
+        "url": "https://www.zacks.com/stock/news/2913355/should-you-buy-hold-or-sell-ionq-stock-before-q1-earnings",
+        "label": "Somewhat-Bullish",
+        "score": 0.174533
+      },
+      {
+        "time": "20260501T185057",
+        "source": "Motley Fool",
+        "title": "Linde  ( LIN )  Q1 2026 Earnings Call Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/05/01/linde-lin-q1-2026-earnings-call-transcript/",
+        "label": "Neutral",
+        "score": 0.114942
+      },
+      {
+        "time": "20260501T175726",
+        "source": "Motley Fool",
+        "title": "Quaker  ( KWR )  Q1 2026 Earnings Call Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/05/01/quaker-kwr-q1-2026-earnings-call-transcript/",
+        "label": "Neutral",
+        "score": 0.085495
+      },
+      {
+        "time": "20260501T143345",
+        "source": "Motley Fool",
+        "title": "Lear  ( LEA )  Q1 2026 Earnings Call Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/05/01/lear-lea-q1-2026-earnings-call-transcript/",
+        "label": "Neutral",
+        "score": 0.05694
+      },
+      {
+        "time": "20260501T142057",
+        "source": "Motley Fool",
+        "title": "AptarGroup  ( ATR )  Q1 2026 Earnings Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/05/01/aptargroup-atr-q1-2026-earnings-transcript/",
+        "label": "Neutral",
+        "score": 0.051175
+      }
+    ]
+  },
+  "USDJPY": {
+    "symbol": "USDJPY",
+    "ticker": "FOREX:JPY",
+    "label": "USD/JPY",
+    "articles_total": 50,
+    "avg_score": 0.055,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260501T162700",
+        "source": "Motley Fool",
+        "title": "Park Hotels PK Q1 2026 Earnings Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/05/01/park-hotels-pk-q1-2026-earnings-transcript/",
+        "label": "Neutral",
+        "score": 0.052165
+      },
+      {
+        "time": "20260501T122634",
+        "source": "CNBC",
+        "title": "Japan risks Trump's ire as Iran war fallout sparks currency intervention",
+        "url": "https://www.cnbc.com/2026/05/01/japanese-fx-intervention-wipes-out-yens-iran-war-losses.html",
+        "label": "Somewhat-Bearish",
+        "score": -0.169256
+      },
+      {
+        "time": "20260430T164718",
+        "source": "Motley Fool",
+        "title": "Aflac  ( AFL )  Q1 2026 Earnings Call Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/04/30/aflac-afl-q1-2026-earnings-call-transcript/",
+        "label": "Neutral",
+        "score": 0.076214
+      },
+      {
+        "time": "20260430T150701",
+        "source": "Motley Fool",
+        "title": "Vici Properties  ( VICI )  Q1 2026 Earnings Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/04/30/vici-properties-vici-q1-2026-earnings-transcript/",
+        "label": "Neutral",
+        "score": 0.070463
+      },
+      {
+        "time": "20260430T125912",
+        "source": "Benzinga",
+        "title": "Aflac Q1 2026 Earnings Call Transcript - Aflac  ( NYSE:AFL ) ",
+        "url": "https://www.benzinga.com/insights/news/26/04/52169104/aflac-q1-2026-earnings-call-transcript",
+        "label": "Neutral",
+        "score": 0.104777
+      }
+    ]
+  },
+  "NAS100": {
+    "symbol": "NAS100",
+    "ticker": "QQQ",
+    "label": "NAS100",
+    "articles_total": 50,
+    "avg_score": 0.11,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260501T204435",
+        "source": "富途牛牛",
+        "title": "ProShares UltraPro QQQ ETF Options Spot-On: On May 1st, 463.54K Contracts Were Traded, With 1.49 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/72460594/proshares-ultrapro-qqq-etf-options-spot-on-on-may-1st",
+        "label": "Neutral",
+        "score": 0.11663
+      },
+      {
+        "time": "20260501T140833",
+        "source": "Moomoo",
+        "title": "$ProShares UltraPro QQQ ETF (TQQQ.US)$",
+        "url": "https://www.moomoo.com/community/feed/proshares-ultrapro-qqq-etf-tqqq-us-116499608043526",
+        "label": "Neutral",
+        "score": 0.00135
+      },
+      {
+        "time": "20260501T023827",
+        "source": "Moomoo",
+        "title": "ProShares UltraPro QQQ ETF(TQQQ) Stock Options Chain | Quotes & News",
+        "url": "https://www.moomoo.com/etfs/TQQQ-US/options-chain?chain_id=Name1K9-3FXPhg.1kv56s0&global_content=%7B%22promote_id%22%3A13764,%22sub_promote_id%22%3A107,%22f%22%3A%22www.moomoo.com%2Fetfs%2FUUP-US%22%7D",
+        "label": "Neutral",
+        "score": 0.03827
+      },
+      {
+        "time": "20260501T020835",
+        "source": "Moomoo",
+        "title": "$ProShares UltraPro QQQ ETF (TQQQ.US)$",
+        "url": "https://www.moomoo.com/community/feed/proshares-ultrapro-qqq-etf-tqqq-us-116496865558534",
+        "label": "Neutral",
+        "score": 0.011952
+      },
+      {
+        "time": "20260430T203629",
+        "source": "富途牛牛",
+        "title": "ProShares UltraPro QQQ ETF Options Spot-On: On April 30th, 325.46K Contracts Were Traded, With 1.45 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/72419938/proshares-ultrapro-qqq-etf-options-spot-on-on-april-30th",
+        "label": "Neutral",
+        "score": 0.060657
+      }
+    ]
+  },
+  "GER40": {
+    "symbol": "GER40",
+    "ticker": "EWG",
+    "label": "GER40",
+    "articles_total": 33,
+    "avg_score": 0.0495,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260414T150923",
+        "source": "Stock Investor",
+        "title": "Largest Single-Country European Fund Targets German Equities",
+        "url": "https://www.stockinvestor.com/largest-single-country-european-fund-targets-german-equities/amp/",
+        "label": "Bullish",
+        "score": 0.412663
+      },
+      {
+        "time": "20260409T201200",
+        "source": "Stock Traders Daily",
+        "title": "Understanding Momentum Shifts in (EWG)",
+        "url": "https://news.stocktradersdaily.com/news_release/8/Understanding_Momentum_Shifts_in_EWG_040926081202_1775779922.html",
+        "label": "Neutral",
+        "score": 0.105205
+      },
+      {
+        "time": "20260303T185234",
+        "source": "Defense World",
+        "title": "BlueStem Wealth Partners LLC Buys Shares of 79,545 iShares MSCI Germany ETF $EWG",
+        "url": "https://www.defenseworld.net/2026/03/03/bluestem-wealth-partners-llc-buys-shares-of-79545-ishares-msci-germany-etf-ewg.html",
+        "label": "Neutral",
+        "score": 0.130951
+      },
+      {
+        "time": "20260302T185234",
+        "source": "Defense World",
+        "title": "Citigroup Inc. Buys 77,108 Shares of iShares MSCI Germany ETF $EWG",
+        "url": "https://www.defenseworld.net/2026/03/02/citigroup-inc-buys-77108-shares-of-ishares-msci-germany-etf-ewg.html",
+        "label": "Neutral",
+        "score": 0.126987
+      },
+      {
+        "time": "20260224T144000",
+        "source": "Stock Traders Daily",
+        "title": "(EWG) Movement Within Algorithmic Entry Frameworks",
+        "url": "https://news.stocktradersdaily.com/news_release/81/EWG_Movement_Within_Algorithmic_Entry_Frameworks_022426024001_1771962001.html",
+        "label": "Neutral",
+        "score": 0.115737
+      }
+    ]
+  }
+}
