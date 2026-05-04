@@ -11,6 +11,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - MacBook, Claude Code в терміналі
 - Скорочення не пояснювати: SL, TP, RR, DD, BE, MSB, CHoCH, OB, FVG, LTF, HTF, PDH, PDL, ATH, ATL
 
+## FTMO — обов'язкова перевірка при кожному запиті
+
+**При будь-якому запиті** (прогноз, аналіз, угода, розбір журналу) — **спочатку перевірити** чи не змінились правила FTMO:
+
+```
+https://ftmo.com/en/trading-updates/
+```
+
+Перевіряти: чи є нові записи після останньої перевірки. Якщо є — прочитати і повідомити користувача перед аналізом.
+
+Поточний статус: **Phase 2** (рахунок #7544991, $10k Swing).
+Уточнення правил від підтримки → `ftmo_support_clarifications.md`
+
+---
+
 ## FTMO — прийняте рішення
 
 **Обраний план:** 2-Step + FTMO Swing, $10,000 рахунок, €89
