@@ -53,7 +53,19 @@ _Дата листування: 04.05.2026_
 
 ---
 
+## Відповідь на питання про відмову у виплаті після проходження
+
+**Питання:** Чи може FTMO одобрити Phase 1 і Phase 2 без жодних попереджень — а потім на етапі виплати знайти порушення і відмовити?
+
+**Відповідь FTMO (дослівно):**
+> You need to keep this updated for any changes https://ftmo.com/en/trading-updates/, but if there is no violation of the T&C, it should be fine. Still, all FTMO Accounts and FTMO Challenges are reviewed individually.
+
+**Висновок:** Якщо немає порушення T&C — виплата має бути. Але перевірка індивідуальна (суб'єктивна). Стежити за змінами правил на сторінці оновлень.
+
+---
+
 ## Посилання від FTMO
 
+- https://ftmo.com/en/trading-updates/ — **⚠️ зміни правил — перевіряти раз на тиждень**
 - https://ftmo.com/en/gambling-is-not-the-right-way-to-make-money
 - https://ftmo.com/en/how-much-should-you-risk-on-one-trade
