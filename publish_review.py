@@ -50,17 +50,23 @@ def md_to_html(md: str) -> str:
         # Tables
         if line.startswith("|"):
             if not in_table:
-                html_lines.append('<div class="table-responsive"><table class="table table-sm">')
+                html_lines.append('<div class="table-responsive"><table>')
                 in_table = True
+                first_row = True
             if re.match(r"^\|[-| :]+\|$", line):
+                first_row = False
                 continue  # skip separator row
             cells = [c.strip() for c in line.strip("|").split("|")]
-            tag = "th" if not any("<td>" in l for l in html_lines[-3:]) else "td"
-            html_lines.append("<tr>" + "".join(f"<{tag}>{c}</{tag}>" for c in cells) + "</tr>")
+            if first_row:
+                html_lines.append("<thead><tr>" + "".join(f"<th>{_inline(c)}</th>" for c in cells) + "</tr></thead><tbody>")
+                first_row = False
+            else:
+                html_lines.append("<tr>" + "".join(f"<td>{_inline(c)}</td>" for c in cells) + "</tr>")
             continue
         elif in_table:
-            html_lines.append("</table></div>")
+            html_lines.append("</tbody></table></div>")
             in_table = False
+            first_row = True
 
         # Lists
         if line.startswith("- "):
