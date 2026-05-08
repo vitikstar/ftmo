@@ -1,0 +1,302 @@
+{
+  "XAUUSD": {
+    "symbol": "XAUUSD",
+    "ticker": "GLD",
+    "label": "Gold (XAUUSD)",
+    "articles_total": 50,
+    "avg_score": 0.1679,
+    "bias": "bullish~",
+    "recent": [
+      {
+        "time": "20260506T194006",
+        "source": "sharewise.com",
+        "title": "Is The SPDR Gold Shares ETF Becoming a Crowded Trade That Smart Investors Should Avoid?",
+        "url": "https://www.sharewise.com/us/news_articles/Is_The_SPDR_Gold_Shares_ETF_Becoming_a_Crowded_Trade_That_Smart_Investors_Should_Avoid_TheMotleyFool_20260506_1925",
+        "label": "Neutral",
+        "score": -0.10841
+      },
+      {
+        "time": "20260506T170859",
+        "source": "The Globe and Mail",
+        "title": "Is The SPDR Gold Shares ETF Becoming a Crowded Trade That Smart Investors Should Avoid?",
+        "url": "https://www.theglobeandmail.com/investing/markets/stocks/GLD-A/pressreleases/1748409/is-the-spdr-gold-shares-etf-becoming-a-crowded-trade-that-smart-investors-should-avoid/",
+        "label": "Neutral",
+        "score": -0.123001
+      },
+      {
+        "time": "20260502T010949",
+        "source": "Moomoo",
+        "title": "GLD ETF Falls 0.1%",
+        "url": "https://www.moomoo.com/news/post/69305426/gld-etf-falls-0-1",
+        "label": "Somewhat-Bearish",
+        "score": -0.248874
+      },
+      {
+        "time": "20260430T224037",
+        "source": "Moomoo",
+        "title": "GLD ETF Climbs 1.5%",
+        "url": "https://www.moomoo.com/news/post/69257446/gld-etf-climbs-1-5",
+        "label": "Bullish",
+        "score": 0.362383
+      },
+      {
+        "time": "20260430T172300",
+        "source": "HarianBasis.co",
+        "title": "SPDR Gold Shares ETF Yields 159 Percent Return Over Five Years",
+        "url": "https://www.harianbasis.co/en/spdr-gold-shares-etf-returns-analysis",
+        "label": "Bullish",
+        "score": 0.877491
+      }
+    ]
+  },
+  "XAGUSD": {
+    "symbol": "XAGUSD",
+    "ticker": "SLV",
+    "label": "Silver (XAGUSD)",
+    "articles_total": 50,
+    "avg_score": 0.0656,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260502T170943",
+        "source": "富途牛牛",
+        "title": "IShares Silver Trust Options Spot-On: On May 1st, 531.61K Contracts Were Traded, With 8.07 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/72460585/ishares-silver-trust-options-spot-on-on-may-1st-531",
+        "label": "Neutral",
+        "score": 0.132204
+      },
+      {
+        "time": "20260502T020923",
+        "source": "Moomoo",
+        "title": "$iShares Silver Trust (SLV.US)$",
+        "url": "https://www.moomoo.com/community/feed/ishares-silver-trust-slv-us-116502574399494",
+        "label": "Neutral",
+        "score": 0.008519
+      },
+      {
+        "time": "20260501T040923",
+        "source": "Sahm",
+        "title": "Here's How Much You Would Have Made Owning iShares Silver Trust Stock In The Last 5 Years",
+        "url": "https://www.sahmcapital.com/news/content/heres-how-much-you-would-have-made-owning-ishares-silver-trust-stock-in-the-last-5-years-2026-04-30",
+        "label": "Bullish",
+        "score": 0.40131
+      },
+      {
+        "time": "20260429T153909",
+        "source": "TradingView",
+        "title": "Silver price at risk as SLV ETF outflows jump ahead of FOMC decision",
+        "url": "https://www.tradingview.com/news/invezz:bb675baaf094b:0-silver-price-at-risk-as-slv-etf-outflows-jump-ahead-of-fomc-decision/",
+        "label": "Bearish",
+        "score": -0.380678
+      },
+      {
+        "time": "20260429T091023",
+        "source": "Invezz",
+        "title": "Silver price at risk as SLV ETF outflows jump ahead of FOMC decision",
+        "url": "https://invezz.com/news/2026/04/29/silver-price-at-risk-as-slv-etf-outflows-jump-ahead-of-fomc-decision/",
+        "label": "Bearish",
+        "score": -0.8063
+      }
+    ]
+  },
+  "EURUSD": {
+    "symbol": "EURUSD",
+    "ticker": "FOREX:EUR",
+    "label": "EUR/USD",
+    "articles_total": 50,
+    "avg_score": 0.0921,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260508T050000",
+        "source": "GlobeNewswire",
+        "title": "Dividend payment ex-date of AS Merko Ehitus is 12 May 2026",
+        "url": "https://www.globenewswire.com/news-release/2026/05/08/3290808/0/en/Dividend-payment-ex-date-of-AS-Merko-Ehitus-is-12-May-2026.html",
+        "label": "Somewhat-Bullish",
+        "score": 0.279696
+      },
+      {
+        "time": "20260508T050000",
+        "source": "GlobeNewswire",
+        "title": "Clariant delivers resilient performance in challenging environment",
+        "url": "https://www.globenewswire.com/news-release/2026/05/08/3290807/0/en/Clariant-delivers-resilient-performance-in-challenging-environment.html",
+        "label": "Neutral",
+        "score": -0.111915
+      },
+      {
+        "time": "20260507T203000",
+        "source": "GlobeNewswire",
+        "title": "Mercer International Inc. Reports First Quarter 2026 Results",
+        "url": "https://www.globenewswire.com/news-release/2026/05/07/3290660/10647/en/Mercer-International-Inc-Reports-First-Quarter-2026-Results.html",
+        "label": "Neutral",
+        "score": -0.070663
+      },
+      {
+        "time": "20260507T201500",
+        "source": "GlobeNewswire",
+        "title": "VALHI REPORTS FIRST QUARTER 2026 RESULTS",
+        "url": "https://www.globenewswire.com/news-release/2026/05/07/3290624/0/en/VALHI-REPORTS-FIRST-QUARTER-2026-RESULTS.html",
+        "label": "Neutral",
+        "score": 0.009159
+      },
+      {
+        "time": "20260507T160000",
+        "source": "GlobeNewswire",
+        "title": "KBC Group: DIVIDEND ANNOUNCEMENT",
+        "url": "https://www.globenewswire.com/news-release/2026/05/07/3290320/0/en/KBC-Group-DIVIDEND-ANNOUNCEMENT.html",
+        "label": "Neutral",
+        "score": 0.050765
+      }
+    ]
+  },
+  "USDJPY": {
+    "symbol": "USDJPY",
+    "ticker": "FOREX:JPY",
+    "label": "USD/JPY",
+    "articles_total": 50,
+    "avg_score": 0.0431,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260507T084529",
+        "source": "CNBC",
+        "title": "Japan may have fired its yen bazooka twice, but markets are testing Tokyo's resolve",
+        "url": "https://www.cnbc.com/2026/05/07/japan-yen-intervention-boj-rate-gap-currency-pressure.html",
+        "label": "Somewhat-Bullish",
+        "score": 0.212459
+      },
+      {
+        "time": "20260506T203340",
+        "source": "Motley Fool",
+        "title": "Greenlight Re  ( GLRE )  Q2 2025 Earnings Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/05/06/greenlight-re-glre-q2-2025-earnings-transcript/",
+        "label": "Somewhat-Bullish",
+        "score": 0.199306
+      },
+      {
+        "time": "20260506T164848",
+        "source": "Motley Fool",
+        "title": "Prudential  ( PRU )  Q1 2026 Earnings Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/05/06/prudential-pru-q1-2026-earnings-transcript/",
+        "label": "Neutral",
+        "score": 0.087704
+      },
+      {
+        "time": "20260505T235140",
+        "source": "Motley Fool",
+        "title": "Strategy  ( MSTR )  Q1 2026 Earnings Transcript",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/05/05/strategy-mstr-q1-2026-earnings-transcript/",
+        "label": "Somewhat-Bullish",
+        "score": 0.153086
+      },
+      {
+        "time": "20260505T105323",
+        "source": "Business Insider",
+        "title": "ANOTHER QUARTER OF STRONG MIX - 2026 GUIDANCE CONFIRMED",
+        "url": "https://markets.businessinsider.com/news/stocks/another-quarter-of-strong-mix---2026-guidance-confirmed-1036105743",
+        "label": "Neutral",
+        "score": 0.053996
+      }
+    ]
+  },
+  "NAS100": {
+    "symbol": "NAS100",
+    "ticker": "QQQ",
+    "label": "NAS100",
+    "articles_total": 50,
+    "avg_score": 0.1332,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260507T210845",
+        "source": "富途牛牛",
+        "title": "ProShares UltraPro QQQ ETF Options Spot-On: On May 7th, 334.3K Contracts Were Traded, With 1.44 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/72724302/proshares-ultrapro-qqq-etf-options-spot-on-on-may-7th",
+        "label": "Neutral",
+        "score": 0.09655
+      },
+      {
+        "time": "20260507T155043",
+        "source": "The Motley Fool",
+        "title": "Should You Buy the Invesco QQQ ETF With the Nasdaq at a Record High? Here's What History Says.",
+        "url": "https://www.fool.com/investing/2026/05/07/should-you-buy-invesco-qqq-etf-nasdaq-record-high/",
+        "label": "Bullish",
+        "score": 0.361679
+      },
+      {
+        "time": "20260507T063839",
+        "source": "Moomoo",
+        "title": "$ProShares UltraPro QQQ ETF (TQQQ.US)$ trading the Q's is really fun actually",
+        "url": "https://www.moomoo.com/community/feed/proshares-ultrapro-qqq-etf-tqqq-us-trading-the-q-s-116535741383061",
+        "label": "Neutral",
+        "score": 0.037981
+      },
+      {
+        "time": "20260506T220922",
+        "source": "Moomoo",
+        "title": "QQQ ETF Declines 0.1%",
+        "url": "https://www.moomoo.com/news/post/69597156/qqq-etf-declines-0-1",
+        "label": "Somewhat-Bearish",
+        "score": -0.216252
+      },
+      {
+        "time": "20260506T203839",
+        "source": "富途牛牛",
+        "title": "ProShares UltraPro QQQ ETF Options Spot-On: On May 6th, 398K Contracts Were Traded, With 1.4 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/72637655/proshares-ultrapro-qqq-etf-options-spot-on-on-may-6th",
+        "label": "Neutral",
+        "score": 0.109644
+      }
+    ]
+  },
+  "GER40": {
+    "symbol": "GER40",
+    "ticker": "EWG",
+    "label": "GER40",
+    "articles_total": 33,
+    "avg_score": 0.0521,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260414T150923",
+        "source": "Stock Investor",
+        "title": "Largest Single-Country European Fund Targets German Equities",
+        "url": "https://www.stockinvestor.com/largest-single-country-european-fund-targets-german-equities/amp/",
+        "label": "Bullish",
+        "score": 0.417379
+      },
+      {
+        "time": "20260409T201200",
+        "source": "Stock Traders Daily",
+        "title": "Understanding Momentum Shifts in (EWG)",
+        "url": "https://news.stocktradersdaily.com/news_release/8/Understanding_Momentum_Shifts_in_EWG_040926081202_1775779922.html",
+        "label": "Neutral",
+        "score": 0.132874
+      },
+      {
+        "time": "20260303T185234",
+        "source": "Defense World",
+        "title": "BlueStem Wealth Partners LLC Buys Shares of 79,545 iShares MSCI Germany ETF $EWG",
+        "url": "https://www.defenseworld.net/2026/03/03/bluestem-wealth-partners-llc-buys-shares-of-79545-ishares-msci-germany-etf-ewg.html",
+        "label": "Neutral",
+        "score": 0.125766
+      },
+      {
+        "time": "20260302T185234",
+        "source": "Defense World",
+        "title": "Citigroup Inc. Buys 77,108 Shares of iShares MSCI Germany ETF $EWG",
+        "url": "https://www.defenseworld.net/2026/03/02/citigroup-inc-buys-77108-shares-of-ishares-msci-germany-etf-ewg.html",
+        "label": "Neutral",
+        "score": 0.129865
+      },
+      {
+        "time": "20260224T144000",
+        "source": "Stock Traders Daily",
+        "title": "(EWG) Movement Within Algorithmic Entry Frameworks",
+        "url": "https://news.stocktradersdaily.com/news_release/81/EWG_Movement_Within_Algorithmic_Entry_Frameworks_022426024001_1771962001.html",
+        "label": "Neutral",
+        "score": 0.138547
+      }
+    ]
+  }
+}
