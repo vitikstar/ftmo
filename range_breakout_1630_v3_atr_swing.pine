@@ -1,0 +1,109 @@
+//@version=6
+strategy(
+     title             = "Range Breakout 16:30 Kyiv",
+     overlay           = true,
+     default_qty_type  = strategy.percent_of_equity,
+     default_qty_value = 1,
+     commission_type   = strategy.commission.percent,
+     commission_value  = 0.05,
+     slippage          = 2)
+
+// ═══════════════════════════════════════════════════
+//  INPUTS
+// ═══════════════════════════════════════════════════
+var g1 = "Range"
+i_rngHour = input.int(16,    "Start hour (Kyiv)",           minval=0, maxval=23,  group=g1)
+i_rngMin  = input.int(30,    "Start minute (Kyiv)",         minval=0, maxval=59,  group=g1)
+i_rngDur  = input.int(30,    "Duration (minutes)",          minval=5, maxval=240, group=g1)
+i_strict  = input.bool(true, "Full body outside (strict)",  group=g1)
+
+var g2 = "Trade"
+i_rr      = input.float(2.0, "RR Ratio",                    minval=0.5, maxval=20, step=0.5, group=g2)
+i_slBuf   = input.float(0.0, "SL buffer beyond range",      minval=0.0, step=0.1,  group=g2)
+i_maxHour = input.int(21,    "No entries after (Kyiv hour)", minval=0, maxval=23,  group=g2)
+i_once    = input.bool(true,  "Max 1 trade per day",        group=g2)
+i_eod     = input.bool(false, "Close position at 23:55",    group=g2)
+
+// ═══════════════════════════════════════════════════
+//  TIME (Kyiv = Europe/Kiev)
+// ═══════════════════════════════════════════════════
+TZ     = "Europe/Kiev"
+kHour  = hour(time, TZ)
+kMin   = minute(time, TZ)
+kDay   = dayofmonth(time, TZ)
+
+startM = i_rngHour * 60 + i_rngMin
+endM   = startM + i_rngDur
+curM   = kHour * 60 + kMin
+
+inWindow   = curM >= startM and curM < endM
+afterRange = curM >= endM
+underCutof = kHour < i_maxHour
+
+// ═══════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════
+var float rHigh   = na
+var float rLow    = na
+var int   lastDay = na
+var bool  traded  = false
+
+// Reset daily
+if na(lastDay) or kDay != lastDay
+    rHigh   := na
+    rLow    := na
+    lastDay := kDay
+    traded  := false
+
+// Build range during window
+if inWindow
+    rHigh := na(rHigh) ? high : math.max(rHigh, high)
+    rLow  := na(rLow)  ? low  : math.min(rLow,  low)
+
+// ═══════════════════════════════════════════════════
+//  SIGNALS
+// ═══════════════════════════════════════════════════
+rangeOk  = not na(rHigh) and afterRange
+canEnter = rangeOk and underCutof and strategy.position_size == 0 and
+           (not i_once or not traded)
+
+bHigh = math.max(open, close)
+bLow  = math.min(open, close)
+
+longSig  = canEnter and close > rHigh and (not i_strict or bLow  > rHigh)
+shortSig = canEnter and close < rLow  and (not i_strict or bHigh < rLow)
+
+// ═══════════════════════════════════════════════════
+//  ORDERS
+// ═══════════════════════════════════════════════════
+if longSig
+    sl = rLow  - i_slBuf
+    tp = close + (close - sl) * i_rr
+    strategy.entry("L", strategy.long)
+    strategy.exit("L_ex", "L", stop=sl, limit=tp)
+    traded := true
+
+if shortSig
+    sl = rHigh + i_slBuf
+    tp = close - (sl - close) * i_rr
+    strategy.entry("S", strategy.short)
+    strategy.exit("S_ex", "S", stop=sl, limit=tp)
+    traded := true
+
+// End of day close
+if i_eod and kHour == 23 and kMin >= 55
+    strategy.close_all("EOD")
+
+// ═══════════════════════════════════════════════════
+//  VISUALS
+// ═══════════════════════════════════════════════════
+bgcolor(inWindow ? color.new(color.blue, 90) : na, title="Range window")
+
+showH = (inWindow or afterRange) and not na(rHigh)
+showL = (inWindow or afterRange) and not na(rLow)
+
+plot(showH ? rHigh : na, "Range High", color.red,  2, plot.style_stepline)
+plot(showL ? rLow  : na, "Range Low",  color.lime, 2, plot.style_stepline)
+
+plotshape(longSig,  "Long",  shape.triangleup,   location.belowbar, color.green, size=size.small)
+plotshape(shortSig, "Short", shape.triangledown, location.abovebar, color.red,   size=size.small)
