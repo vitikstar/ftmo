@@ -1,0 +1,223 @@
+//@version=6
+strategy(title="Range Breakout NY Open v5 GBPUSD (PRO VISUAL)", overlay=true,
+     default_qty_type=strategy.fixed, default_qty_value=1,
+     commission_type=strategy.commission.percent, commission_value=0.003,
+     slippage=1, initial_capital=10000,
+     margin_long=3.33, margin_short=3.33)
+
+// ======================
+// INPUTS (GBP/USD OPTIMIZED)
+// ======================
+var g0 = "Risk"
+i_riskPct = input.float(1.0, "Risk per trade (%)", minval=0.1, maxval=5.0, step=0.1, group=g0)
+
+var g1 = "Range"
+i_rngHour  = input.int(17,      "Start hour (Kyiv)", minval=0, maxval=23, group=g1)
+i_rngMin   = input.int(30,      "Start minute", minval=0, maxval=59, group=g1)
+i_rngDur   = input.int(30,      "Duration (min)", minval=5, maxval=120, group=g1)
+i_minRange = input.float(0.0008, "Min range size (GBP)", step=0.0001, group=g1)
+
+// ======================
+// SL / TRAIL (GBP — aggressive, tight stop)
+// ======================
+var g2 = "SL / Trail"
+i_atrLen  = input.int(100,  "ATR length", minval=1, group=g2)
+i_atrMult = input.float(1.2, "Initial SL (x ATR)", minval=0.1, step=0.1, group=g2)
+i_trMult  = input.float(1.0, "Trail SL (x ATR)", minval=0.1, step=0.1, group=g2)
+i_bePct   = input.float(20,  "Move to BE at (% TP)", minval=10, maxval=90, group=g2)
+
+// ======================
+// TP
+// ======================
+var g3 = "TP"
+i_swing  = input.int(80,   "Swing lookback (bars)", minval=5, maxval=300, group=g3)
+i_rrFall = input.float(2.8, "RR fallback", minval=1.0, step=0.5, group=g3)
+
+// ======================
+// TRADE
+// ======================
+var g4 = "Trade"
+i_maxHour = input.int(22,    "No entries after (Kyiv)", minval=0, maxval=23, group=g4)
+i_once    = input.bool(false, "Max 1 trade per day", group=g4)
+i_eod     = input.bool(true,  "Close at 22:00 Kyiv", group=g4)
+
+// ======================
+// FILTERS (full set for GBP)
+// ======================
+var g5 = "Filters"
+i_confirm = input.bool(false, "2nd candle confirmation", group=g5)
+i_h1ema   = input.bool(true,  "H1 EMA50 trend filter", group=g5)
+i_volFilt = input.bool(true,  "Volume filter", group=g5)
+i_volMult = input.float(1.7,  "Volume SMA mult", minval=1.0, step=0.1, group=g5)
+
+// ======================
+// TIME
+// ======================
+TZ = "Europe/Kiev"
+
+kHour = hour(time, TZ)
+kMin  = minute(time, TZ)
+kDay  = dayofmonth(time, TZ)
+kDow  = dayofweek(time, TZ)
+
+startM = i_rngHour * 60 + i_rngMin
+endM   = startM + i_rngDur
+curM   = kHour * 60 + kMin
+
+inWindow    = curM >= startM and curM < endM
+afterRange  = curM >= endM
+underCutoff = kHour < i_maxHour
+canTradeDay = kDow != dayofweek.monday and kDow != dayofweek.friday
+
+// ======================
+// RANGE
+// ======================
+var float rHigh  = na
+var float rLow   = na
+var int   lastDay = na
+var bool  traded  = false
+
+if na(lastDay) or kDay != lastDay
+    rHigh   := na
+    rLow    := na
+    lastDay := kDay
+    traded  := false
+
+if inWindow
+    rHigh := na(rHigh) ? high : math.max(rHigh, high)
+    rLow  := na(rLow)  ? low  : math.min(rLow,  low)
+
+// ======================
+// CALC
+// ======================
+atr       = ta.atr(i_atrLen)
+swingHigh = ta.highest(high, i_swing)
+swingLow  = ta.lowest(low,   i_swing)
+
+rangeSize = not na(rHigh) ? rHigh - rLow : 0.0
+rangeOk   = not na(rHigh) and afterRange and rangeSize >= i_minRange
+canEnter  = rangeOk and underCutoff and canTradeDay and strategy.position_size == 0 and (not i_once or not traded)
+
+// ======================
+// FILTERS
+// ======================
+h1ema   = request.security(syminfo.tickerid, "60", ta.ema(close, 50))
+h1Long  = not i_h1ema or close > h1ema
+h1Short = not i_h1ema or close < h1ema
+
+volSma = ta.sma(volume, 20)
+volOk  = not i_volFilt or volume > volSma * i_volMult
+
+// ======================
+// BREAKOUT
+// ======================
+bHigh = math.max(open, close)
+bLow  = math.min(open, close)
+
+longSig  = canEnter and h1Long  and volOk and close > rHigh and bLow > rHigh
+shortSig = canEnter and h1Short and volOk and close < rLow  and bHigh < rLow
+
+// ======================
+// POSITION SIZING
+// ======================
+calcQty(slDist) =>
+    risk = strategy.equity * i_riskPct / 100
+    pv   = syminfo.pointvalue > 0 ? syminfo.pointvalue : 1.0
+    math.max(0.001, risk / (slDist * pv))
+
+var float pos_sl    = na
+var float pos_tp    = na
+var float pos_entry = na
+var box   tradeBox  = na
+
+// ======================
+// ALERTS
+// ======================
+alertcondition(longSig,  "LONG GBP",  "LONG {{ticker}}")
+alertcondition(shortSig, "SHORT GBP", "SHORT {{ticker}}")
+
+// ======================
+// LONG
+// ======================
+if longSig
+    pos_entry := close
+    pos_sl    := close - atr * i_atrMult
+    pos_tp    := swingHigh > close ? swingHigh : close + (close - pos_sl) * i_rrFall
+
+    qty = calcQty(close - pos_sl)
+    strategy.entry("L", strategy.long, qty=qty)
+    strategy.exit("L_exit", "L", stop=pos_sl, limit=pos_tp)
+
+    alert("LONG ENTRY " + syminfo.ticker, alert.freq_once_per_bar_close)
+
+    if not na(tradeBox)
+        box.delete(tradeBox)
+    tradeBox := box.new(bar_index, pos_tp, bar_index + 1, pos_sl,
+         bgcolor=color.new(color.green, 85), border_color=color.green)
+
+    traded := true
+
+// ======================
+// SHORT
+// ======================
+if shortSig
+    pos_entry := close
+    pos_sl    := close + atr * i_atrMult
+    pos_tp    := swingLow < close ? swingLow : close - (pos_sl - close) * i_rrFall
+
+    qty = calcQty(pos_sl - close)
+    strategy.entry("S", strategy.short, qty=qty)
+    strategy.exit("S_exit", "S", stop=pos_sl, limit=pos_tp)
+
+    alert("SHORT ENTRY " + syminfo.ticker, alert.freq_once_per_bar_close)
+
+    if not na(tradeBox)
+        box.delete(tradeBox)
+    tradeBox := box.new(bar_index, pos_sl, bar_index + 1, pos_tp,
+         bgcolor=color.new(color.red, 85), border_color=color.red)
+
+    traded := true
+
+// ======================
+// BOX UPDATE
+// ======================
+if strategy.position_size != 0 and not na(tradeBox)
+    box.set_right(tradeBox, bar_index)
+
+    if strategy.position_size > 0
+        box.set_top(tradeBox, pos_tp)
+        box.set_bottom(tradeBox, pos_sl)
+
+    if strategy.position_size < 0
+        box.set_top(tradeBox, pos_sl)
+        box.set_bottom(tradeBox, pos_tp)
+
+// ======================
+// EXIT
+// ======================
+closed = strategy.position_size == 0 and strategy.position_size[1] != 0
+
+if closed
+    alert("POSITION CLOSED " + syminfo.ticker, alert.freq_once_per_bar_close)
+    if not na(tradeBox)
+        box.set_right(tradeBox, bar_index)
+
+// ======================
+// EOD CLOSE
+// ======================
+if i_eod and kHour == 22 and kMin == 0
+    strategy.close_all()
+
+// ======================
+// VISUALS
+// ======================
+bgcolor(inWindow ? color.new(color.blue, 90) : na, title="Range window")
+
+plot((inWindow or afterRange) and not na(rHigh) ? rHigh : na, "Range High", color.red,  2, plot.style_stepline)
+plot((inWindow or afterRange) and not na(rLow)  ? rLow  : na, "Range Low",  color.lime, 2, plot.style_stepline)
+
+plot(strategy.position_size != 0 and not na(pos_entry) ? pos_entry : na, "Entry", color.white,  1, plot.style_stepline)
+plot(strategy.position_size != 0 and not na(pos_sl)    ? pos_sl    : na, "SL",    color.orange, 1, plot.style_stepline)
+
+plotshape(longSig,  "Long",  shape.triangleup,   location.belowbar, color.green, size=size.small)
+plotshape(shortSig, "Short", shape.triangledown, location.abovebar, color.red,   size=size.small)
