@@ -221,3 +221,37 @@ plot(strategy.position_size != 0 and not na(pos_sl)    ? pos_sl    : na, "SL",  
 
 plotshape(longSig,  "Long",  shape.triangleup,   location.belowbar, color.green, size=size.small)
 plotshape(shortSig, "Short", shape.triangledown, location.abovebar, color.red,   size=size.small)
+
+// ======================
+// LEGEND
+// ======================
+i_legend = input.bool(true, "Show legend", group="Visual")
+
+var table lgd = table.new(position.top_right, 2, 10,
+     bgcolor        = color.new(color.black, 60),
+     border_color   = color.new(color.gray,  60),
+     border_width   = 1,
+     frame_color    = color.new(color.gray,  40),
+     frame_width    = 1)
+
+if barstate.islast and i_legend
+    table.cell(lgd, 0, 0, "Елемент",     text_color=color.new(color.gray, 20), text_size=size.small, bgcolor=color.new(color.black, 40))
+    table.cell(lgd, 1, 0, "Пояснення",   text_color=color.new(color.gray, 20), text_size=size.small, bgcolor=color.new(color.black, 40))
+    table.cell(lgd, 0, 1, "░ синій фон", text_color=color.new(color.blue, 10),  text_size=size.small)
+    table.cell(lgd, 1, 1, "Вікно формування каналу (17:30–18:00)", text_color=color.white, text_size=size.small)
+    table.cell(lgd, 0, 2, "━ червона",   text_color=color.red,                 text_size=size.small)
+    table.cell(lgd, 1, 2, "Range High — верхня межа каналу",       text_color=color.white, text_size=size.small)
+    table.cell(lgd, 0, 3, "━ зелена",    text_color=color.lime,                text_size=size.small)
+    table.cell(lgd, 1, 3, "Range Low — нижня межа каналу",         text_color=color.white, text_size=size.small)
+    table.cell(lgd, 0, 4, "━ біла",      text_color=color.white,               text_size=size.small)
+    table.cell(lgd, 1, 4, "Entry — ціна входу в угоду",            text_color=color.white, text_size=size.small)
+    table.cell(lgd, 0, 5, "━ помаранч.", text_color=color.orange,              text_size=size.small)
+    table.cell(lgd, 1, 5, "Stop Loss / Trailing SL (ATR-based)",   text_color=color.white, text_size=size.small)
+    table.cell(lgd, 0, 6, "▲ зелений",  text_color=color.green,               text_size=size.small)
+    table.cell(lgd, 1, 6, "LONG сигнал — пробій Range High",       text_color=color.white, text_size=size.small)
+    table.cell(lgd, 0, 7, "▼ червоний", text_color=color.red,                 text_size=size.small)
+    table.cell(lgd, 1, 7, "SHORT сигнал — пробій Range Low",       text_color=color.white, text_size=size.small)
+    table.cell(lgd, 0, 8, "□ зелений",  text_color=color.new(color.green, 20), text_size=size.small)
+    table.cell(lgd, 1, 8, "Зона LONG: Entry → SL (знизу) / TP (зверху)", text_color=color.white, text_size=size.small)
+    table.cell(lgd, 0, 9, "□ червоний", text_color=color.new(color.red, 20),   text_size=size.small)
+    table.cell(lgd, 1, 9, "Зона SHORT: Entry → SL (зверху) / TP (знизу)", text_color=color.white, text_size=size.small)
