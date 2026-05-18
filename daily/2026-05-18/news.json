@@ -1,0 +1,302 @@
+{
+  "XAUUSD": {
+    "symbol": "XAUUSD",
+    "ticker": "GLD",
+    "label": "Gold (XAUUSD)",
+    "articles_total": 50,
+    "avg_score": 0.1323,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260515T040923",
+        "source": "Moomoo",
+        "title": "GLD ETF Falls 0.8%",
+        "url": "https://www.moomoo.com/news/post/70036300/gld-etf-falls-0-8",
+        "label": "Bearish",
+        "score": -0.381236
+      },
+      {
+        "time": "20260513T203933",
+        "source": "Moomoo",
+        "title": "GLD ETF Declines 0.6%",
+        "url": "https://www.moomoo.com/news/post/69948684/gld-etf-declines-0-6",
+        "label": "Bearish",
+        "score": -0.646773
+      },
+      {
+        "time": "20260510T153933",
+        "source": "Investing.com",
+        "title": "SPDR Gold Shares ETF Analysis",
+        "url": "https://www.investing.com/etfs/spdr-gold-trust-opinion/670",
+        "label": "Neutral",
+        "score": 0.04635
+      },
+      {
+        "time": "20260510T143852",
+        "source": "Investing.com",
+        "title": "SPDR Gold Shares ETF Analysis",
+        "url": "https://www.investing.com/etfs/spdr-gold-trust-opinion/671",
+        "label": "Neutral",
+        "score": 0.086869
+      },
+      {
+        "time": "20260509T023852",
+        "source": "Moomoo",
+        "title": "GLD ETF Climbs 0.5%",
+        "url": "https://www.moomoo.com/news/post/69680156/gld-etf-climbs-0-5",
+        "label": "Somewhat-Bullish",
+        "score": 0.306434
+      }
+    ]
+  },
+  "XAGUSD": {
+    "symbol": "XAGUSD",
+    "ticker": "SLV",
+    "label": "Silver (XAGUSD)",
+    "articles_total": 50,
+    "avg_score": 0.0925,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260516T191208",
+        "source": "TradingView",
+        "title": "iShares Silver Trust ETF Trade Ideas — SKILLING:SLV",
+        "url": "https://www.tradingview.com/symbols/SKILLING-SLV/ideas/page-2/",
+        "label": "Neutral",
+        "score": 0.036486
+      },
+      {
+        "time": "20260515T223939",
+        "source": "Bitget",
+        "title": "According to the 13F filing, Citadel Advisors LLC established new positions in AstraZeneca and iShares Silver Trust in Q1, and increased holdings in Micron, Meta, and Warner Bros. Discovery.",
+        "url": "https://www.bitget.com/asia/news/detail/12560605414421",
+        "label": "Somewhat-Bullish",
+        "score": 0.281295
+      },
+      {
+        "time": "20260515T170931",
+        "source": "TradingView",
+        "title": "Why is iShares Silver Trust slipping today and what comes next?",
+        "url": "https://www.tradingview.com/news/invezz:382178c75094b:0-why-is-ishares-silver-trust-slipping-today-and-what-comes-next/",
+        "label": "Bearish",
+        "score": -0.601994
+      },
+      {
+        "time": "20260515T100931",
+        "source": "Bitget",
+        "title": "According to the 13F filing, Citadel Advisors LLC established new positions in AstraZeneca and iShares Silver Trust in Q1, and increased holdings in Micron, Meta, and Warner Bros. Discovery.",
+        "url": "https://www.bitget.com/news/detail/12560605414421",
+        "label": "Somewhat-Bullish",
+        "score": 0.213252
+      },
+      {
+        "time": "20260514T213930",
+        "source": "富途牛牛",
+        "title": "IShares Silver Trust Options Spot-On: On May 14th, 643.59K Contracts Were Traded, With 8.57 Million Open Interest",
+        "url": "https://news.futunn.com/en/post/73127111/ishares-silver-trust-options-spot-on-on-may-14th-643",
+        "label": "Neutral",
+        "score": 0.117122
+      }
+    ]
+  },
+  "EURUSD": {
+    "symbol": "EURUSD",
+    "ticker": "FOREX:EUR",
+    "label": "EUR/USD",
+    "articles_total": 50,
+    "avg_score": 0.0794,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260517T083102",
+        "source": "Cointelegraph",
+        "title": "Intesa Sanpaolo's Crypto Portfolio Hits $235M as Italy's Biggest Bank Goes Deeper Into Digital Assets",
+        "url": "https://cointelegraph.com/news/italys-largest-bank-more-than-doubles-crypto-holdings-to-235m-in-q1-report",
+        "label": "Neutral",
+        "score": -0.055458
+      },
+      {
+        "time": "20260515T161100",
+        "source": "Zacks Commentary",
+        "title": "ETFs to Benefit as Dollar Logs Biggest Weekly Gain Since March",
+        "url": "https://www.zacks.com/stock/news/2922163/etfs-to-benefit-as-dollar-logs-biggest-weekly-gain-since-march",
+        "label": "Neutral",
+        "score": 0.124905
+      },
+      {
+        "time": "20260515T151025",
+        "source": "Cointelegraph",
+        "title": "Augustus CEO Says Banks Can't Be Rebuilt for AI as OCC Backs Stablecoin Bank",
+        "url": "https://cointelegraph.com/news/augustus-ceo-says-incumbents-cant-rebuild-for-ai-as-occ-backs-stablecoin-bank-bet",
+        "label": "Neutral",
+        "score": 0.043209
+      },
+      {
+        "time": "20260515T095107",
+        "source": "Benzinga",
+        "title": "Dollar Rally Gains Steam As Traders Scale Back Fed Rate Cut Bets-These ETFs Are Climbing - Invesco DB USD",
+        "url": "https://www.benzinga.com/etfs/currency-etfs/26/05/52589781/dollar-rally-gains-steam-as-traders-scale-back-fed-rate-cut-bets-these-etfs-are-climbing",
+        "label": "Neutral",
+        "score": 0.139318
+      },
+      {
+        "time": "20260515T060000",
+        "source": "GlobeNewswire",
+        "title": "Annual General Meeting and Extraordinary General Meeting on 17 June 2026",
+        "url": "https://www.globenewswire.com/news-release/2026/05/15/3295555/0/en/Annual-General-Meeting-and-Extraordinary-General-Meeting-on-17-June-2026.html",
+        "label": "Neutral",
+        "score": 0.0
+      }
+    ]
+  },
+  "USDJPY": {
+    "symbol": "USDJPY",
+    "ticker": "FOREX:JPY",
+    "label": "USD/JPY",
+    "articles_total": 50,
+    "avg_score": 0.0452,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260518T025426",
+        "source": "CNBC",
+        "title": "Mizuho shares slide 7% after denying decision on reported Rakuten Bank investment shift",
+        "url": "https://www.cnbc.com/2026/05/18/mizuho-shares-rakuten-bank-investment-card-yomiuri-shimbun-report.html",
+        "label": "Bullish",
+        "score": 0.422796
+      },
+      {
+        "time": "20260515T160400",
+        "source": "Zacks Commentary",
+        "title": "Can Caterpillar Sustain Margins Amid Rising Tariff Pressures?",
+        "url": "https://www.zacks.com/stock/news/2922151/can-caterpillar-sustain-margins-amid-rising-tariff-pressures",
+        "label": "Neutral",
+        "score": -0.022046
+      },
+      {
+        "time": "20260515T095107",
+        "source": "Benzinga",
+        "title": "Dollar Rally Gains Steam As Traders Scale Back Fed Rate Cut Bets-These ETFs Are Climbing - Invesco DB USD",
+        "url": "https://www.benzinga.com/etfs/currency-etfs/26/05/52589781/dollar-rally-gains-steam-as-traders-scale-back-fed-rate-cut-bets-these-etfs-are-climbing",
+        "label": "Neutral",
+        "score": 0.139318
+      },
+      {
+        "time": "20260515T042649",
+        "source": "CNBC",
+        "title": "Honda shares rise over 7% as investors shrug off first operating loss in nearly 70 years",
+        "url": "https://www.cnbc.com/2026/05/15/honda-shares-rise-even-after-company-reports-operating-losses-.html",
+        "label": "Neutral",
+        "score": 0.051215
+      },
+      {
+        "time": "20260513T180500",
+        "source": "Zacks Commentary",
+        "title": "Berkshire Hathaway Raises Japan Bet With Higher Trading House Stakes",
+        "url": "https://www.zacks.com/stock/news/2920824/berkshire-hathaway-raises-japan-bet-with-higher-trading-house-stakes",
+        "label": "Neutral",
+        "score": 0.142398
+      }
+    ]
+  },
+  "NAS100": {
+    "symbol": "NAS100",
+    "ticker": "QQQ",
+    "label": "NAS100",
+    "articles_total": 50,
+    "avg_score": 0.1278,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260517T185153",
+        "source": "IndexBox",
+        "title": "QQQ ETF vs S&P 500: Should You Choose Tech or a Broad-Market Fund? - News and Statistics",
+        "url": "https://www.indexbox.io/blog/tech-focused-etf-vs-broad-market-fund-a-portfolio-choice/",
+        "label": "Neutral",
+        "score": 0.148198
+      },
+      {
+        "time": "20260516T030849",
+        "source": "TradingView",
+        "title": "INVESCO QQQ TRUST SERIES 1 ETF Trade Ideas — ACTIVTRADES:QQQ.US",
+        "url": "https://www.tradingview.com/symbols/ACTIVTRADES-QQQ.US/ideas/page-6/",
+        "label": "Neutral",
+        "score": -0.081256
+      },
+      {
+        "time": "20260515T211215",
+        "source": "Moomoo",
+        "title": "QQQ ETF Falls 1.5%",
+        "url": "https://www.moomoo.com/news/post/70117560/qqq-etf-falls-1-5",
+        "label": "Bearish",
+        "score": -0.355903
+      },
+      {
+        "time": "20260515T180847",
+        "source": "Moomoo",
+        "title": "QQQ ETF Rises 0.7%",
+        "url": "https://www.moomoo.com/news/post/70036447/qqq-etf-rises-0-7",
+        "label": "Bullish",
+        "score": 0.38319
+      },
+      {
+        "time": "20260514T153844",
+        "source": "Moomoo",
+        "title": "$Proshares Ultra QQQ ETF (QLD.US)$ this better n cheaper",
+        "url": "https://www.moomoo.com/community/feed/proshares-ultra-qqq-etf-qld-us-this-better-n-cheaper-116573588291590",
+        "label": "Neutral",
+        "score": 0.017262
+      }
+    ]
+  },
+  "GER40": {
+    "symbol": "GER40",
+    "ticker": "EWG",
+    "label": "GER40",
+    "articles_total": 33,
+    "avg_score": 0.0508,
+    "bias": "neutral",
+    "recent": [
+      {
+        "time": "20260414T150923",
+        "source": "Stock Investor",
+        "title": "Largest Single-Country European Fund Targets German Equities",
+        "url": "https://www.stockinvestor.com/largest-single-country-european-fund-targets-german-equities/amp/",
+        "label": "Bullish",
+        "score": 0.409664
+      },
+      {
+        "time": "20260409T201200",
+        "source": "Stock Traders Daily",
+        "title": "Understanding Momentum Shifts in (EWG)",
+        "url": "https://news.stocktradersdaily.com/news_release/8/Understanding_Momentum_Shifts_in_EWG_040926081202_1775779922.html",
+        "label": "Neutral",
+        "score": 0.126361
+      },
+      {
+        "time": "20260303T185234",
+        "source": "Defense World",
+        "title": "BlueStem Wealth Partners LLC Buys Shares of 79,545 iShares MSCI Germany ETF $EWG",
+        "url": "https://www.defenseworld.net/2026/03/03/bluestem-wealth-partners-llc-buys-shares-of-79545-ishares-msci-germany-etf-ewg.html",
+        "label": "Neutral",
+        "score": 0.147008
+      },
+      {
+        "time": "20260302T185234",
+        "source": "Defense World",
+        "title": "Citigroup Inc. Buys 77,108 Shares of iShares MSCI Germany ETF $EWG",
+        "url": "https://www.defenseworld.net/2026/03/02/citigroup-inc-buys-77108-shares-of-ishares-msci-germany-etf-ewg.html",
+        "label": "Neutral",
+        "score": 0.132806
+      },
+      {
+        "time": "20260224T144000",
+        "source": "Stock Traders Daily",
+        "title": "(EWG) Movement Within Algorithmic Entry Frameworks",
+        "url": "https://news.stocktradersdaily.com/news_release/81/EWG_Movement_Within_Algorithmic_Entry_Frameworks_022426024001_1771962001.html",
+        "label": "Neutral",
+        "score": 0.139159
+      }
+    ]
+  }
+}
